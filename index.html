@@ -414,10 +414,6 @@
     <div class="results-container" id="resultsContainer">
         <!-- Los resultados se generarán aquí con JavaScript -->
     </div>
-    
-    <div class="image-info">
-        <p><i class="fas fa-lightbulb"></i> <strong>Nota sobre imágenes:</strong> Las imágenes se cargan desde la carpeta "icons". Si no hay imagen para un material, se mostrará un icono por defecto. Para añadir tus propias imágenes, crea una carpeta llamada "icons" en el mismo directorio que este archivo HTML y añade imágenes PNG de 32x32 con el nombre exacto del material.</p>
-    </div>
 
     <script>
         // Datos de las armaduras extraídos del archivo txt actualizado
@@ -1572,12 +1568,8 @@
                     let gradeTitle = `Grado ${grade} - Materiales Totales`;
                     
                     // Personalizar título según el grado
-                    if (grade === "D") gradeTitle += " (Tier 1-2)";
-                    if (grade === "C") gradeTitle += " (Tier 1-3)";
                     if (grade === "B") gradeTitle += " (Zubei, Avadon, Blue Wolf, Doom)";
                     if (grade === "A") gradeTitle += " (Dark Crystal, Tallum, Nightmare, Majestic)";
-                    if (grade === "S") gradeTitle += " (Armor/Helmet/Gloves/Boots)";
-                    if (grade === "Dynasty") gradeTitle += " (Armadura final)";
                     
                     resultsContainer.innerHTML += createMaterialTable(gradeTotals[grade], gradeTitle, gradeClass);
                 }
