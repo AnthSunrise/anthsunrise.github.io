@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificador de Armadura Pesada - L2 (Hasta Dynasty)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #4d9fff;
+            text-align: center;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #2a5caa;
+            padding-bottom: 15px;
+        }
+        
+        h2 {
+            color: #6ab7ff;
+            margin-top: 30px;
+            border-left: 4px solid #2a5caa;
+            padding-left: 10px;
+        }
+        
+        .controls {
+            background-color: #16213e;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            border: 1px solid #2a5caa;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            min-width: 250px;
+        }
+        
+        label {
+            margin-bottom: 8px;
+            color: #a3d0ff;
+            font-weight: bold;
+        }
+        
+        select {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #0f3460;
+            color: white;
+            border: 1px solid #2a5caa;
+            font-size: 14px;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: #4d9fff;
+            box-shadow: 0 0 5px rgba(77, 159, 255, 0.5);
+        }
+        
+        .tier-info {
+            background-color: #0f3460;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            border-left: 4px solid #4d9fff;
+            flex: 1;
+            max-width: 400px;
+        }
+        
+        .results-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .table-container {
+            flex: 1;
+            min-width: 300px;
+            background-color: #16213e;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #2a5caa;
+        }
+        
+        .table-container h3 {
+            background-color: #0f3460;
+            margin: 0;
+            padding: 15px;
+            color: #a3d0ff;
+            border-bottom: 1px solid #2a5caa;
+        }
+        
+        .table-container h3.grade-d {
+            border-left: 5px solid #4CAF50;
+        }
+        
+        .table-container h3.grade-c {
+            border-left: 5px solid #2196F3;
+        }
+        
+        .table-container h3.grade-b {
+            border-left: 5px solid #9C27B0;
+        }
+        
+        .table-container h3.grade-a {
+            border-left: 5px solid #FF9800;
+        }
+        
+        .table-container h3.grade-s {
+            border-left: 5px solid #FF5722;
+        }
+        
+        .table-container h3.grade-dynasty {
+            border-left: 5px solid #FFD700;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background-color: #1a3a6a;
+            padding: 12px 10px;
+            text-align: left;
+            color: #a3d0ff;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #2a5caa;
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(15, 52, 96, 0.3);
+        }
+        
+        tr:hover {
+            background-color: rgba(77, 159, 255, 0.1);
+        }
+        
+        .material-cell {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .material-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            border: 1px solid #2a5caa;
+            background-color: #0f3460;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #a3d0ff;
+            flex-shrink: 0;
+        }
+        
+        .material-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+        
+        .material-name {
+            font-weight: bold;
+            color: #d1e7ff;
+        }
+        
+        .material-count {
+            text-align: right;
+            font-family: monospace;
+            font-size: 16px;
+            color: #ffffff;
+        }
+        
+        .total-row {
+            background-color: rgba(26, 58, 106, 0.8) !important;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        
+        .grade-total {
+            background-color: #1a3a6a;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: inline-block;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        
+        .instructions {
+            background-color: rgba(15, 52, 96, 0.5);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border-left: 4px solid #4d9fff;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        
+        .remaining-info {
+            color: #FF9800;
+            font-weight: bold;
+        }
+        
+        .image-info {
+            background-color: rgba(15, 52, 96, 0.3);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 13px;
+            color: #a3d0ff;
+        }
+        
+        .grade-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .grade-card {
+            background-color: #16213e;
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid #2a5caa;
+            min-width: 200px;
+            flex: 1;
+        }
+        
+        .grade-card.d {
+            border-left: 5px solid #4CAF50;
+        }
+        
+        .grade-card.c {
+            border-left: 5px solid #2196F3;
+        }
+        
+        .grade-card.b {
+            border-left: 5px solid #9C27B0;
+        }
+        
+        .grade-card.a {
+            border-left: 5px solid #FF9800;
+        }
+        
+        .grade-card.s {
+            border-left: 5px solid #FF5722;
+        }
+        
+        .grade-card.dynasty {
+            border-left: 5px solid #FFD700;
+        }
+        
+        .grade-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #d1e7ff;
+        }
+        
+        .grade-stats {
+            font-size: 14px;
+            color: #a3d0ff;
+        }
+        
+        @media (max-width: 768px) {
+            .results-container {
+                flex-direction: column;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .control-group {
+                width: 100%;
+            }
+            
+            .grade-summary {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1><i class="fas fa-shield-alt"></i> Planificador de Armadura Pesada - Lineage 2 (Hasta Dynasty)</h1>
+    
+    <div class="controls">
+        <div class="control-group">
+            <label for="targetSelect"><i class="fas fa-bullseye"></i> Objetivo a alcanzar:</label>
+            <select id="targetSelect">
+                <option value="all">Todas las armaduras (D → Dynasty)</option>
+                <option value="grade-d">Solo grado D (Tier 1-2)</option>
+                <option value="grade-c">Hasta grado C (Tier 1-3)</option>
+                <option value="grade-b">Hasta grado B (Zubei, Avadon, Blue Wolf, Doom)</option>
+                <option value="grade-a">Hasta grado A (Dark Crystal, Tallum, Nightmare, Majestic)</option>
+                <option value="grade-s">Hasta grado S</option>
+                <option value="grade-dynasty">Hasta Dynasty</option>
+            </select>
+        </div>
+        
+        <div class="control-group">
+            <label for="currentArmorSelect"><i class="fas fa-user"></i> Armadura que ya tengo:</label>
+            <select id="currentArmorSelect">
+                <option value="none">No tengo ninguna (comenzar desde 0)</option>
+                <optgroup label="Grado D">
+                    <option value="D-T1-L1">Grado D - Tier 1 - Lv 1</option>
+                    <option value="D-T1-L2">Grado D - Tier 1 - Lv 2</option>
+                    <option value="D-T1-L3">Grado D - Tier 1 - Lv 3</option>
+                    <option value="D-T2-L1">Grado D - Tier 2 - Lv 1</option>
+                    <option value="D-T2-L2">Grado D - Tier 2 - Lv 2</option>
+                    <option value="D-T2-L3">Grado D - Tier 2 - Lv 3</option>
+                </optgroup>
+                <optgroup label="Grado C">
+                    <option value="C-T1-L1">Grado C - Tier 1 - Lv 1</option>
+                    <option value="C-T1-L2">Grado C - Tier 1 - Lv 2</option>
+                    <option value="C-T1-L3">Grado C - Tier 1 - Lv 3</option>
+                    <option value="C-T2-L1">Grado C - Tier 2 - Lv 1</option>
+                    <option value="C-T2-L2">Grado C - Tier 2 - Lv 2</option>
+                    <option value="C-T2-L3">Grado C - Tier 2 - Lv 3</option>
+                    <option value="C-T3-L1">Grado C - Tier 3 - Lv 1</option>
+                    <option value="C-T3-L2">Grado C - Tier 3 - Lv 2</option>
+                    <option value="C-T3-L3">Grado C - Tier 3 - Lv 3</option>
+                </optgroup>
+                <optgroup label="Grado B">
+                    <option value="B-Zubei-L1">Grado B - Zubei - Lv 1</option>
+                    <option value="B-Zubei-L2">Grado B - Zubei - Lv 2</option>
+                    <option value="B-Zubei-L3">Grado B - Zubei - Lv 3</option>
+                    <option value="B-Avadon-L1">Grado B - Avadon - Lv 1</option>
+                    <option value="B-Avadon-L2">Grado B - Avadon - Lv 2</option>
+                    <option value="B-Avadon-L3">Grado B - Avadon - Lv 3</option>
+                    <option value="B-BlueWolf-L1">Grado B - Blue Wolf - Lv 1</option>
+                    <option value="B-BlueWolf-L2">Grado B - Blue Wolf - Lv 2</option>
+                    <option value="B-BlueWolf-L3">Grado B - Blue Wolf - Lv 3</option>
+                    <option value="B-Doom-L1">Grado B - Doom - Lv 1</option>
+                    <option value="B-Doom-L2">Grado B - Doom - Lv 2</option>
+                    <option value="B-Doom-L3">Grado B - Doom - Lv 3</option>
+                </optgroup>
+                <optgroup label="Grado A">
+                    <option value="A-DarkCrystal-L1">Grado A - Dark Crystal - Lv 1</option>
+                    <option value="A-DarkCrystal-L2">Grado A - Dark Crystal - Lv 2</option>
+                    <option value="A-DarkCrystal-L3">Grado A - Dark Crystal - Lv 3</option>
+                    <option value="A-Tallum-L1">Grado A - Tallum - Lv 1</option>
+                    <option value="A-Tallum-L2">Grado A - Tallum - Lv 2</option>
+                    <option value="A-Tallum-L3">Grado A - Tallum - Lv 3</option>
+                    <option value="A-Nightmare-L1">Grado A - Nightmare - Lv 1</option>
+                    <option value="A-Nightmare-L2">Grado A - Nightmare - Lv 2</option>
+                    <option value="A-Nightmare-L3">Grado A - Nightmare - Lv 3</option>
+                    <option value="A-Majestic-L1">Grado A - Majestic - Lv 1</option>
+                    <option value="A-Majestic-L2">Grado A - Majestic - Lv 2</option>
+                    <option value="A-Majestic-L3">Grado A - Majestic - Lv 3</option>
+                </optgroup>
+                <optgroup label="Grado S">
+                    <option value="S-L1">Grado S - Lv 1</option>
+                    <option value="S-L2">Grado S - Lv 2</option>
+                    <option value="S-L3">Grado S - Lv 3</option>
+                </optgroup>
+                <optgroup label="Grado Dynasty">
+                    <option value="Dynasty-L1">Grado Dynasty - Lv 1</option>
+                    <option value="Dynasty-L2">Grado Dynasty - Lv 2</option>
+                    <option value="Dynasty-L3">Grado Dynasty - Lv 3</option>
+                </optgroup>
+            </select>
+        </div>
+        
+        <div class="tier-info">
+            <strong><i class="fas fa-layer-group"></i> Progresión de armaduras:</strong><br>
+            <strong>D:</strong> Tier 1 → Tier 2<br>
+            <strong>C:</strong> Tier 1 → Tier 2 → Tier 3<br>
+            <strong>B:</strong> Zubei → Avadon → Blue Wolf → Doom<br>
+            <strong>A:</strong> Dark Crystal → Tallum → Nightmare → Majestic<br>
+            <strong>S:</strong> Grado S (Armor/Helmet/Gloves/Boots)<br>
+            <strong>Dynasty:</strong> Armadura final
+        </div>
+    </div>
+    
+    <div class="instructions">
+        <p><span class="highlight"><i class="fas fa-info-circle"></i> Instrucciones:</span> Selecciona el objetivo que quieres alcanzar y la armadura que ya tienes equipada. El sistema calculará automáticamente los materiales que necesitas para avanzar desde tu armadura actual hasta tu objetivo.</p>
+        <p><span class="highlight"><i class="fas fa-image"></i> Imágenes:</span> Para añadir imágenes a los materiales, simplemente añade archivos con el nombre del material en la carpeta "icons" (ej: "Adena.png", "Crystal D.png"). Las imágenes deben ser de 32x32 píxeles.</p>
+    </div>
+    
+    <div id="summaryContainer" class="grade-summary">
+        <!-- Resumen por grado se generará aquí -->
+    </div>
+    
+    <h2><i class="fas fa-calculator"></i> Materiales Requeridos</h2>
+    
+    <div class="results-container" id="resultsContainer">
+        <!-- Los resultados se generarán aquí con JavaScript -->
+    </div>
+    
+    <div class="image-info">
+        <p><i class="fas fa-lightbulb"></i> <strong>Nota sobre imágenes:</strong> Las imágenes se cargan desde la carpeta "icons". Si no hay imagen para un material, se mostrará un icono por defecto. Para añadir tus propias imágenes, crea una carpeta llamada "icons" en el mismo directorio que este archivo HTML y añade imágenes PNG de 32x32 con el nombre exacto del material.</p>
+    </div>
+
+    <script>
+        // Datos de las armaduras extraídos del archivo txt actualizado
+        const armorData = {
+            // Grado D
+            "D-T1-L1": {
+                name: "Grado D - Tier 1 - Lv 1",
+                grade: "D",
+                tier: 1,
+                materials: {
+                    "Ancient Adena": 15000,
+                    "Leather": 180,
+                    "Cord": 105,
+                    "Crystal D": 240,
+                    "Gemstone D": 80,
+                    "Adena": 350000
+                }
+            },
+            "D-T1-L2": {
+                name: "Grado D - Tier 1 - Lv 2",
+                grade: "D",
+                tier: 1,
+                materials: {
+                    "Ancient Adena": 10000,
+                    "Leather": 180,
+                    "Cord": 105,
+                    "Crystal D": 240,
+                    "Gemstone D": 80,
+                    "Adena": 350000
+                }
+            },
+            "D-T1-L3": {
+                name: "Grado D - Tier 1 - Lv 3",
+                grade: "D",
+                tier: 1,
+                materials: {
+                    "Ancient Adena": 15000,
+                    "Leather": 180,
+                    "Cord": 105,
+                    "Crystal D": 240,
+                    "Gemstone D": 80,
+                    "Adena": 350000
+                }
+            },
+            "D-T2-L1": {
+                name: "Grado D - Tier 2 - Lv 1",
+                grade: "D",
+                tier: 2,
+                materials: {
+                    "Raid Boss Cloth": 1,
+                    "Ancient Adena": 20000,
+                    "Leather": 65,
+                    "Cord": 40,
+                    "Crystal D": 240,
+                    "Gemstone D": 80,
+                    "Adena": 350000
+                }
+            },
+            "D-T2-L2": {
+                name: "Grado D - Tier 2 - Lv 2",
+                grade: "D",
+                tier: 2,
+                materials: {
+                    "Raid Boss Cloth": 1,
+                    "Ancient Adena": 25000,
+                    "Leather": 65,
+                    "Cord": 40,
+                    "Crystal D": 240,
+                    "Gemstone D": 80,
+                    "Adena": 350000
+                }
+            },
+            "D-T2-L3": {
+                name: "Grado D - Tier 2 - Lv 3",
+                grade: "D",
+                tier: 2,
+                materials: {
+                    "Raid Boss Cloth": 1,
+                    "Ancient Adena": 30000,
+                    "Leather": 65,
+                    "Cord": 40,
+                    "Crystal D": 240,
+                    "Gemstone D": 80,
+                    "Adena": 350000
+                }
+            },
+            // Grado C
+            "C-T1-L1": {
+                name: "Grado C - Tier 1 - Lv 1",
+                grade: "C",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 1,
+                    "Mutagen": 7,
+                    "Ancient Adena": 100000,
+                    "Quality Leather": 180,
+                    "Synthetic Braid": 180,
+                    "Metallic Fiber": 90,
+                    "High-grade Suede": 24,
+                    "Blacksmith's Frame": 2,
+                    "Crystal C": 150,
+                    "Gemstone C": 50,
+                    "Adena": 3200000
+                }
+            },
+            "C-T1-L2": {
+                name: "Grado C - Tier 1 - Lv 2",
+                grade: "C",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 1,
+                    "Mutagen": 7,
+                    "Ancient Adena": 150000,
+                    "Quality Leather": 180,
+                    "Synthetic Braid": 180,
+                    "Metallic Fiber": 90,
+                    "High-grade Suede": 24,
+                    "Blacksmith's Frame": 2,
+                    "Crystal C": 150,
+                    "Gemstone C": 50,
+                    "Adena": 3200000
+                }
+            },
+            "C-T1-L3": {
+                name: "Grado C - Tier 1 - Lv 3",
+                grade: "C",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 1,
+                    "Mutagen": 7,
+                    "Ancient Adena": 200000,
+                    "Quality Leather": 180,
+                    "Synthetic Braid": 180,
+                    "Metallic Fiber": 90,
+                    "High-grade Suede": 24,
+                    "Blacksmith's Frame": 2,
+                    "Crystal C": 150,
+                    "Gemstone C": 50,
+                    "Adena": 3200000
+                }
+            },
+            "C-T2-L1": {
+                name: "Grado C - Tier 2 - Lv 1",
+                grade: "C",
+                tier: 2,
+                materials: {
+                    "Raid Boss Cloth": 2,
+                    "Mutagen": 7,
+                    "Ancient Adena": 250000,
+                    "Quality Leather": 180,
+                    "Synthetic Braid": 180,
+                    "Metallic Fiber": 90,
+                    "High-grade Suede": 25,
+                    "Blacksmith's Frame": 3,
+                    "Crystal C": 250,
+                    "Gemstone C": 100,
+                    "Adena": 3200000
+                }
+            },
+            "C-T2-L2": {
+                name: "Grado C - Tier 2 - Lv 2",
+                grade: "C",
+                tier: 2,
+                materials: {
+                    "Raid Boss Cloth": 2,
+                    "Mutagen": 7,
+                    "Ancient Adena": 300000,
+                    "Quality Leather": 180,
+                    "Synthetic Braid": 180,
+                    "Metallic Fiber": 90,
+                    "High-grade Suede": 25,
+                    "Blacksmith's Frame": 3,
+                    "Crystal C": 250,
+                    "Gemstone C": 100,
+                    "Adena": 3200000
+                }
+            },
+            "C-T2-L3": {
+                name: "Grado C - Tier 2 - Lv 3",
+                grade: "C",
+                tier: 2,
+                materials: {
+                    "Raid Boss Cloth": 2,
+                    "Mutagen": 7,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 180,
+                    "Synthetic Braid": 180,
+                    "Metallic Fiber": 90,
+                    "High-grade Suede": 25,
+                    "Blacksmith's Frame": 3,
+                    "Crystal C": 250,
+                    "Gemstone C": 100,
+                    "Adena": 4000000
+                }
+            },
+            "C-T3-L1": {
+                name: "Grado C - Tier 3 - Lv 1",
+                grade: "C",
+                tier: 3,
+                materials: {
+                    "Raid Boss Cloth": 2,
+                    "Mutagen": 7,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 180,
+                    "Synthetic Braid": 180,
+                    "Metallic Fiber": 55,
+                    "High-grade Suede": 25,
+                    "Blacksmith's Frame": 4,
+                    "Crystal C": 350,
+                    "Gemstone C": 150,
+                    "Adena": 4000000
+                }
+            },
+            "C-T3-L2": {
+                name: "Grado C - Tier 3 - Lv 2",
+                grade: "C",
+                tier: 3,
+                materials: {
+                    "Raid Boss Cloth": 2,
+                    "Mutagen": 7,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 180,
+                    "Synthetic Braid": 180,
+                    "Metallic Fiber": 55,
+                    "High-grade Suede": 25,
+                    "Blacksmith's Frame": 4,
+                    "Crystal C": 350,
+                    "Gemstone C": 150,
+                    "Adena": 4000000
+                }
+            },
+            "C-T3-L3": {
+                name: "Grado C - Tier 3 - Lv 3",
+                grade: "C",
+                tier: 3,
+                materials: {
+                    "Raid Boss Cloth": 2,
+                    "Mutagen": 7,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 180,
+                    "Synthetic Braid": 180,
+                    "Metallic Fiber": 55,
+                    "High-grade Suede": 25,
+                    "Blacksmith's Frame": 4,
+                    "Crystal C": 350,
+                    "Gemstone C": 150,
+                    "Adena": 4000000
+                }
+            },
+            // Grado B
+            "B-Zubei-L1": {
+                name: "Grado B - Zubei - Lv 1",
+                grade: "B",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 3,
+                    "Mutagen": 14,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 250,
+                    "Synthetic Braid": 250,
+                    "Metallic Fiber": 180,
+                    "Asofe": 180,
+                    "Blacksmith's Frame": 4,
+                    "Gemstone B": 45,
+                    "Crystal B": 85,
+                    "Adena": 8000000
+                }
+            },
+            "B-Zubei-L2": {
+                name: "Grado B - Zubei - Lv 2",
+                grade: "B",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 3,
+                    "Mutagen": 14,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 250,
+                    "Synthetic Braid": 250,
+                    "Metallic Fiber": 180,
+                    "Asofe": 180,
+                    "Blacksmith's Frame": 4,
+                    "Gemstone B": 45,
+                    "Crystal B": 85,
+                    "Adena": 8000000
+                }
+            },
+            "B-Zubei-L3": {
+                name: "Grado B - Zubei - Lv 3",
+                grade: "B",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 3,
+                    "Mutagen": 14,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 250,
+                    "Synthetic Braid": 250,
+                    "Metallic Fiber": 180,
+                    "Asofe": 180,
+                    "Blacksmith's Frame": 4,
+                    "Gemstone B": 45,
+                    "Crystal B": 85,
+                    "Adena": 8000000
+                }
+            },
+            "B-Avadon-L1": {
+                name: "Grado B - Avadon - Lv 1",
+                grade: "B",
+                tier: 2,
+                materials: {
+                    "Raid Boss Cloth": 3,
+                    "Mutagen": 14,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 250,
+                    "Synthetic Braid": 250,
+                    "Metallic Fiber": 180,
+                    "Asofe": 180,
+                    "Blacksmith's Frame": 5,
+                    "Gemstone B": 45,
+                    "Crystal B": 85,
+                    "Adena": 8500000
+                }
+            },
+            "B-Avadon-L2": {
+                name: "Grado B - Avadon - Lv 2",
+                grade: "B",
+                tier: 2,
+                materials: {
+                    "Raid Boss Cloth": 3,
+                    "Mutagen": 14,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 250,
+                    "Synthetic Braid": 250,
+                    "Metallic Fiber": 180,
+                    "Asofe": 180,
+                    "Blacksmith's Frame": 5,
+                    "Gemstone B": 45,
+                    "Crystal B": 85,
+                    "Adena": 8500000
+                }
+            },
+            "B-Avadon-L3": {
+                name: "Grado B - Avadon - Lv 3",
+                grade: "B",
+                tier: 2,
+                materials: {
+                    "Raid Boss Cloth": 3,
+                    "Mutagen": 14,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 250,
+                    "Synthetic Braid": 250,
+                    "Metallic Fiber": 180,
+                    "Asofe": 180,
+                    "Blacksmith's Frame": 5,
+                    "Gemstone B": 45,
+                    "Crystal B": 85,
+                    "Adena": 8500000
+                }
+            },
+            "B-BlueWolf-L1": {
+                name: "Grado B - Blue Wolf - Lv 1",
+                grade: "B",
+                tier: 3,
+                materials: {
+                    "Raid Boss Cloth": 3,
+                    "Mutagen": 14,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 250,
+                    "Synthetic Braid": 250,
+                    "Metallic Fiber": 180,
+                    "Asofe": 180,
+                    "Blacksmith's Frame": 6,
+                    "Gemstone B": 45,
+                    "Crystal B": 85,
+                    "Adena": 9000000
+                }
+            },
+            "B-BlueWolf-L2": {
+                name: "Grado B - Blue Wolf - Lv 2",
+                grade: "B",
+                tier: 3,
+                materials: {
+                    "Raid Boss Cloth": 3,
+                    "Mutagen": 14,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 250,
+                    "Synthetic Braid": 250,
+                    "Metallic Fiber": 180,
+                    "Asofe": 180,
+                    "Blacksmith's Frame": 6,
+                    "Gemstone B": 45,
+                    "Crystal B": 85,
+                    "Adena": 9000000
+                }
+            },
+            "B-BlueWolf-L3": {
+                name: "Grado B - Blue Wolf - Lv 3",
+                grade: "B",
+                tier: 3,
+                materials: {
+                    "Raid Boss Cloth": 3,
+                    "Mutagen": 14,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 250,
+                    "Synthetic Braid": 250,
+                    "Metallic Fiber": 180,
+                    "Asofe": 180,
+                    "Blacksmith's Frame": 6,
+                    "Gemstone B": 45,
+                    "Crystal B": 85,
+                    "Adena": 9000000
+                }
+            },
+            "B-Doom-L1": {
+                name: "Grado B - Doom - Lv 1",
+                grade: "B",
+                tier: 4,
+                materials: {
+                    "Raid Boss Cloth": 3,
+                    "Mutagen": 14,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 250,
+                    "Synthetic Braid": 250,
+                    "Metallic Fiber": 180,
+                    "Asofe": 180,
+                    "Blacksmith's Frame": 7,
+                    "Gemstone B": 45,
+                    "Crystal B": 85,
+                    "Adena": 10500000
+                }
+            },
+            "B-Doom-L2": {
+                name: "Grado B - Doom - Lv 2",
+                grade: "B",
+                tier: 4,
+                materials: {
+                    "Raid Boss Cloth": 3,
+                    "Mutagen": 14,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 250,
+                    "Synthetic Braid": 250,
+                    "Metallic Fiber": 180,
+                    "Asofe": 180,
+                    "Blacksmith's Frame": 7,
+                    "Gemstone B": 45,
+                    "Crystal B": 85,
+                    "Adena": 10500000
+                }
+            },
+            "B-Doom-L3": {
+                name: "Grado B - Doom - Lv 3",
+                grade: "B",
+                tier: 4,
+                materials: {
+                    "Raid Boss Cloth": 3,
+                    "Mutagen": 14,
+                    "Ancient Adena": 350000,
+                    "Quality Leather": 250,
+                    "Synthetic Braid": 250,
+                    "Metallic Fiber": 180,
+                    "Asofe": 180,
+                    "Blacksmith's Frame": 7,
+                    "Gemstone B": 45,
+                    "Crystal B": 85,
+                    "Adena": 10500000
+                }
+            },
+            // Grado A
+            "A-DarkCrystal-L1": {
+                name: "Grado A - Dark Crystal - Lv 1",
+                grade: "A",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 4,
+                    "Mutagen": 14,
+                    "Ancient Adena": 400000,
+                    "Quality Leather": 250,
+                    "Synthetic Braid": 250,
+                    "Metallic Fiber": 180,
+                    "Asofe": 180,
+                    "Blacksmith's Frame": 7,
+                    "Gemstone B": 45,
+                    "Crystal B": 95,
+                    "Adena": 16000000
+                }
+            },
+            "A-DarkCrystal-L2": {
+                name: "Grado A - Dark Crystal - Lv 2",
+                grade: "A",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 5,
+                    "Mutagen": 70,
+                    "Ancient Adena": 450000,
+                    "Maestro Mold": 3,
+                    "Maestro Anvil Lock": 2,
+                    "Quality Leather": 450,
+                    "Metallic Fiber": 120,
+                    "Synthetic Braid": 80,
+                    "Asofe": 200,
+                    "High-grade Suede": 24,
+                    "Gemstone A": 35,
+                    "Crystal A": 110,
+                    "Adena": 15000000
+                }
+            },
+            "A-DarkCrystal-L3": {
+                name: "Grado A - Dark Crystal - Lv 3",
+                grade: "A",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 5,
+                    "Mutagen": 70,
+                    "Ancient Adena": 450000,
+                    "Maestro Mold": 3,
+                    "Maestro Anvil Lock": 2,
+                    "Quality Leather": 450,
+                    "Metallic Fiber": 120,
+                    "Synthetic Braid": 80,
+                    "Asofe": 200,
+                    "High-grade Suede": 24,
+                    "Gemstone A": 35,
+                    "Crystal A": 110,
+                    "Adena": 15000000
+                }
+            },
+            "A-Tallum-L1": {
+                name: "Grado A - Tallum - Lv 1",
+                grade: "A",
+                tier: 2,
+                materials: {
+                    "Raid Boss Cloth": 5,
+                    "Mutagen": 70,
+                    "Ancient Adena": 450000,
+                    "Maestro Mold": 6,
+                    "Maestro Anvil Lock": 4,
+                    "Quality Leather": 350,
+                    "Metallic Fiber": 100,
+                    "Synthetic Braid": 80,
+                    "Asofe": 208,
+                    "High-grade Suede": 60,
+                    "Gemstone A": 45,
+                    "Crystal A": 125,
+                    "Adena": 20000000
+                }
+            },
+            "A-Tallum-L2": {
+                name: "Grado A - Tallum - Lv 2",
+                grade: "A",
+                tier: 2,
+                materials: {
+                    "Raid Boss Cloth": 5,
+                    "Mutagen": 70,
+                    "Ancient Adena": 450000,
+                    "Maestro Mold": 6,
+                    "Maestro Anvil Lock": 4,
+                    "Quality Leather": 350,
+                    "Metallic Fiber": 100,
+                    "Synthetic Braid": 80,
+                    "Asofe": 208,
+                    "High-grade Suede": 60,
+                    "Gemstone A": 45,
+                    "Crystal A": 125,
+                    "Adena": 20000000
+                }
+            },
+            "A-Tallum-L3": {
+                name: "Grado A - Tallum - Lv 3",
+                grade: "A",
+                tier: 2,
+                materials: {
+                    "Raid Boss Cloth": 5,
+                    "Mutagen": 70,
+                    "Ancient Adena": 450000,
+                    "Maestro Mold": 6,
+                    "Maestro Anvil Lock": 4,
+                    "Quality Leather": 350,
+                    "Metallic Fiber": 100,
+                    "Synthetic Braid": 80,
+                    "Asofe": 208,
+                    "High-grade Suede": 60,
+                    "Gemstone A": 45,
+                    "Crystal A": 125,
+                    "Adena": 20000000
+                }
+            },
+            "A-Nightmare-L1": {
+                name: "Grado A - Nightmare - Lv 1",
+                grade: "A",
+                tier: 3,
+                materials: {
+                    "Raid Boss Cloth": 5,
+                    "Mutagen": 70,
+                    "Ancient Adena": 450000,
+                    "Maestro Mold": 9,
+                    "Maestro Anvil Lock": 6,
+                    "Quality Leather": 190,
+                    "Metallic Fiber": 56,
+                    "Synthetic Braid": 48,
+                    "Asofe": 120,
+                    "High-grade Suede": 36,
+                    "Gemstone A": 60,
+                    "Crystal A": 140,
+                    "Adena": 12500000
+                }
+            },
+            "A-Nightmare-L2": {
+                name: "Grado A - Nightmare - Lv 2",
+                grade: "A",
+                tier: 3,
+                materials: {
+                    "Raid Boss Cloth": 5,
+                    "Mutagen": 70,
+                    "Ancient Adena": 450000,
+                    "Maestro Mold": 9,
+                    "Maestro Anvil Lock": 6,
+                    "Quality Leather": 190,
+                    "Metallic Fiber": 56,
+                    "Synthetic Braid": 48,
+                    "Asofe": 120,
+                    "High-grade Suede": 36,
+                    "Gemstone A": 60,
+                    "Crystal A": 140,
+                    "Adena": 12500000
+                }
+            },
+            "A-Nightmare-L3": {
+                name: "Grado A - Nightmare - Lv 3",
+                grade: "A",
+                tier: 3,
+                materials: {
+                    "Raid Boss Cloth": 5,
+                    "Mutagen": 70,
+                    "Ancient Adena": 450000,
+                    "Maestro Mold": 9,
+                    "Maestro Anvil Lock": 6,
+                    "Quality Leather": 190,
+                    "Metallic Fiber": 56,
+                    "Synthetic Braid": 48,
+                    "Asofe": 120,
+                    "High-grade Suede": 36,
+                    "Gemstone A": 60,
+                    "Crystal A": 140,
+                    "Adena": 12500000
+                }
+            },
+            "A-Majestic-L1": {
+                name: "Grado A - Majestic - Lv 1",
+                grade: "A",
+                tier: 4,
+                materials: {
+                    "Raid Boss Cloth": 5,
+                    "Mutagen": 70,
+                    "Ancient Adena": 450000,
+                    "Maestro Mold": 12,
+                    "Maestro Anvil Lock": 8,
+                    "Quality Leather": 185,
+                    "Metallic Fiber": 62,
+                    "Synthetic Braid": 54,
+                    "Asofe": 135,
+                    "High-grade Suede": 42,
+                    "Gemstone A": 77,
+                    "Crystal A": 155,
+                    "Adena": 15000000
+                }
+            },
+            "A-Majestic-L2": {
+                name: "Grado A - Majestic - Lv 2",
+                grade: "A",
+                tier: 4,
+                materials: {
+                    "Raid Boss Cloth": 5,
+                    "Mutagen": 70,
+                    "Ancient Adena": 450000,
+                    "Maestro Mold": 12,
+                    "Maestro Anvil Lock": 8,
+                    "Quality Leather": 185,
+                    "Metallic Fiber": 62,
+                    "Synthetic Braid": 54,
+                    "Asofe": 135,
+                    "High-grade Suede": 42,
+                    "Gemstone A": 77,
+                    "Crystal A": 155,
+                    "Adena": 15000000
+                }
+            },
+            "A-Majestic-L3": {
+                name: "Grado A - Majestic - Lv 3",
+                grade: "A",
+                tier: 4,
+                materials: {
+                    "Raid Boss Cloth": 5,
+                    "Mutagen": 70,
+                    "Ancient Adena": 450000,
+                    "Maestro Mold": 12,
+                    "Maestro Anvil Lock": 8,
+                    "Quality Leather": 185,
+                    "Metallic Fiber": 62,
+                    "Synthetic Braid": 54,
+                    "Asofe": 135,
+                    "High-grade Suede": 42,
+                    "Gemstone A": 77,
+                    "Crystal A": 155,
+                    "Adena": 15000000
+                }
+            },
+            // Grado S
+            "S-L1": {
+                name: "Grado S - Lv 1",
+                grade: "S",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 10,
+                    "Mutagen": 70,
+                    "Ancient Adena": 1000000,
+                    "Corroed Arcsmith Anvil": 5,
+                    "Corroded Reorin Mold": 13,
+                    "Corroded Warsmith Mold": 26,
+                    "Metallic Fiber": 690,
+                    "Quality Leather": 690,
+                    "Synthetic Braid": 460,
+                    "Asofe": 1140,
+                    "Gemstone S": 26,
+                    "Crystal S": 150,
+                    "Adena": 190000000
+                }
+            },
+            "S-L2": {
+                name: "Grado S - Lv 2",
+                grade: "S",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 10,
+                    "Mutagen": 70,
+                    "Ancient Adena": 1000000,
+                    "Corroed Arcsmith Anvil": 5,
+                    "Corroded Reorin Mold": 13,
+                    "Corroded Warsmith Mold": 26,
+                    "Metallic Fiber": 690,
+                    "Quality Leather": 690,
+                    "Synthetic Braid": 460,
+                    "Asofe": 1140,
+                    "Gemstone S": 26,
+                    "Crystal S": 150,
+                    "Adena": 190000000
+                }
+            },
+            "S-L3": {
+                name: "Grado S - Lv 3",
+                grade: "S",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 10,
+                    "Mutagen": 70,
+                    "Ancient Adena": 1000000,
+                    "Corroed Arcsmith Anvil": 5,
+                    "Corroded Reorin Mold": 13,
+                    "Corroded Warsmith Mold": 26,
+                    "Metallic Fiber": 690,
+                    "Quality Leather": 690,
+                    "Synthetic Braid": 460,
+                    "Asofe": 1140,
+                    "Gemstone S": 26,
+                    "Crystal S": 150,
+                    "Adena": 190000000
+                }
+            },
+            // Grado Dynasty
+            "Dynasty-L1": {
+                name: "Grado Dynasty - Lv 1",
+                grade: "Dynasty",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 10,
+                    "Mutagen": 78,
+                    "Ancient Adena": 1000000,
+                    "Corroded Reorin Mold": 28,
+                    "Corroded Warsmith Mold": 26,
+                    "Metallic Fiber": 890,
+                    "Quality Leather": 3690,
+                    "Orichalcum": 544,
+                    "Asofe": 1490,
+                    "High-grade Suede": 340,
+                    "Gemstone S": 29,
+                    "Crystal S": 146,
+                    "Adena": 480000000
+                }
+            },
+            "Dynasty-L2": {
+                name: "Grado Dynasty - Lv 2",
+                grade: "Dynasty",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 10,
+                    "Mutagen": 78,
+                    "Ancient Adena": 1200000,
+                    "Corroded Reorin Mold": 39,
+                    "Corroded Warsmith Mold": 26,
+                    "Metallic Fiber": 1200,
+                    "Quality Leather": 5380,
+                    "Orichalcum": 799,
+                    "Asofe": 1638,
+                    "High-grade Suede": 680,
+                    "Gemstone S": 33,
+                    "Crystal S": 145,
+                    "Adena": 500000000
+                }
+            },
+            "Dynasty-L3": {
+                name: "Grado Dynasty - Lv 3",
+                grade: "Dynasty",
+                tier: 1,
+                materials: {
+                    "Raid Boss Cloth": 10,
+                    "Mutagen": 78,
+                    "Ancient Adena": 1200000,
+                    "Corroded Reorin Mold": 39,
+                    "Corroded Warsmith Mold": 26,
+                    "Metallic Fiber": 1200,
+                    "Quality Leather": 5380,
+                    "Orichalcum": 799,
+                    "Asofe": 1638,
+                    "High-grade Suede": 680,
+                    "Gemstone S": 33,
+                    "Crystal S": 145,
+                    "Adena": 500000000
+                }
+            }
+        };
+
+        // Orden de progresión de armaduras
+        const armorProgression = [
+            // Grado D
+            "D-T1-L1", "D-T1-L2", "D-T1-L3",
+            "D-T2-L1", "D-T2-L2", "D-T2-L3",
+            // Grado C
+            "C-T1-L1", "C-T1-L2", "C-T1-L3",
+            "C-T2-L1", "C-T2-L2", "C-T2-L3",
+            "C-T3-L1", "C-T3-L2", "C-T3-L3",
+            // Grado B
+            "B-Zubei-L1", "B-Zubei-L2", "B-Zubei-L3",
+            "B-Avadon-L1", "B-Avadon-L2", "B-Avadon-L3",
+            "B-BlueWolf-L1", "B-BlueWolf-L2", "B-BlueWolf-L3",
+            "B-Doom-L1", "B-Doom-L2", "B-Doom-L3",
+            // Grado A
+            "A-DarkCrystal-L1", "A-DarkCrystal-L2", "A-DarkCrystal-L3",
+            "A-Tallum-L1", "A-Tallum-L2", "A-Tallum-L3",
+            "A-Nightmare-L1", "A-Nightmare-L2", "A-Nightmare-L3",
+            "A-Majestic-L1", "A-Majestic-L2", "A-Majestic-L3",
+            // Grado S
+            "S-L1", "S-L2", "S-L3",
+            // Grado Dynasty
+            "Dynasty-L1", "Dynasty-L2", "Dynasty-L3"
+        ];
+
+        // Iconos por defecto para materiales (Font Awesome)
+        const materialIcons = {
+            "Adena": "fa-coins",
+            "Ancient Adena": "fa-gem",
+            "Leather": "fa-scroll",
+            "Cord": "fa-rope",
+            "Crystal D": "fa-gem",
+            "Gemstone D": "fa-gem",
+            "Crystal C": "fa-gem",
+            "Gemstone C": "fa-gem",
+            "Crystal B": "fa-gem",
+            "Gemstone B": "fa-gem",
+            "Crystal A": "fa-gem",
+            "Gemstone A": "fa-gem",
+            "Crystal S": "fa-gem",
+            "Gemstone S": "fa-gem",
+            "Raid Boss Cloth": "fa-scroll",
+            "Mutagen": "fa-flask",
+            "Quality Leather": "fa-scroll",
+            "Synthetic Braid": "fa-braille",
+            "Metallic Fiber": "fa-link",
+            "High-Grade Suede": "fa-feather",
+            "Blacksmith's Frame": "fa-tools",
+            "Asofe": "fa-shield",
+            "Maestro Mold": "fa-toolbox",
+            "Maestro Anvil Lock": "fa-lock",
+            "Corroed Arcsmith Anvil": "fa-hammer",
+            "Corroded Reorin's Mold": "fa-toolbox",
+            "Corroded Warsmith's Mold": "fa-toolbox",
+            "Corroded Reorin Mold": "fa-toolbox",
+            "Corroded Warsmith Mold": "fa-toolbox",
+            "Orichalcum": "fa-mountain",
+            "High-grade Suede": "fa-feather"
+        };
+
+        // Función para obtener el icono de un material - CORREGIDA
+        function getMaterialIcon(materialName) {
+            // Primero intenta cargar una imagen
+            // Limpia el nombre del archivo para evitar problemas con caracteres especiales
+            const safeMaterialName = materialName.replace(/[\/\\?%*:|"<>]/g, '_').replace(/'/g, '');
+            const iconPath = `icons/${safeMaterialName}.png`;
+            
+            // Si no hay icono definido, usa uno por defecto
+            const iconClass = materialIcons[materialName] || "fa-cube";
+            
+            // Retorna el HTML correctamente escapado
+            const iconDiv = document.createElement('div');
+            iconDiv.className = 'material-icon';
+            
+            const img = document.createElement('img');
+            img.src = iconPath;
+            img.alt = materialName;
+            img.onerror = function() {
+                // Si la imagen falla, reemplaza con el icono de Font Awesome
+                this.parentElement.innerHTML = `<i class="fas ${iconClass}"></i>`;
+            };
+            
+            iconDiv.appendChild(img);
+            
+            // Convertimos el elemento DOM a string HTML
+            const tempDiv = document.createElement('div');
+            tempDiv.appendChild(iconDiv.cloneNode(true));
+            return tempDiv.innerHTML;
+        }
+
+        // Función para obtener los materiales necesarios según objetivo y armadura actual
+        function calculateMaterials(target, currentArmor) {
+            const totalMaterials = {};
+            const gradeTotals = {};
+            const gradeArmorCount = {};
+            
+            // Encontrar el índice de la armadura actual en la progresión
+            let startIndex = 0;
+            if (currentArmor !== "none") {
+                startIndex = armorProgression.indexOf(currentArmor) + 1;
+                if (startIndex === 0) startIndex = 0; // Si no se encuentra, empezar desde el principio
+            }
+            
+            // Determinar el índice final según el objetivo
+            let endIndex = armorProgression.length;
+            if (target === "grade-d") {
+                endIndex = 6; // Solo grado D (6 armaduras)
+            } else if (target === "grade-c") {
+                endIndex = 15; // Hasta grado C (15 armaduras)
+            } else if (target === "grade-b") {
+                endIndex = 27; // Hasta grado B (27 armaduras)
+            } else if (target === "grade-a") {
+                endIndex = 39; // Hasta grado A (39 armaduras)
+            } else if (target === "grade-s") {
+                endIndex = 42; // Hasta grado S (42 armaduras)
+            } else if (target === "grade-dynasty") {
+                endIndex = 45; // Hasta Dynasty (45 armaduras)
+            }
+            
+            // Sumar materiales de todas las armaduras en el rango
+            for (let i = startIndex; i < endIndex; i++) {
+                const armorKey = armorProgression[i];
+                const armor = armorData[armorKey];
+                const grade = armor.grade;
+                
+                // Contar armaduras por grado
+                gradeArmorCount[grade] = (gradeArmorCount[grade] || 0) + 1;
+                
+                // Inicializar el total por grado si no existe
+                if (!gradeTotals[grade]) {
+                    gradeTotals[grade] = {};
+                }
+                
+                // Sumar materiales
+                for (const [material, quantity] of Object.entries(armor.materials)) {
+                    // Total general
+                    totalMaterials[material] = (totalMaterials[material] || 0) + quantity;
+                    
+                    // Total por grado
+                    gradeTotals[grade][material] = (gradeTotals[grade][material] || 0) + quantity;
+                }
+            }
+            
+            return { totalMaterials, gradeTotals, gradeArmorCount, startIndex, endIndex };
+        }
+
+        // Función para crear una tabla de materiales
+        function createMaterialTable(materials, title, gradeClass) {
+            // Ordenar materiales alfabéticamente
+            const sortedMaterials = Object.entries(materials).sort((a, b) => a[0].localeCompare(b[0]));
+            
+            // Calcular total de Adena y Ancient Adena para mostrarlos primero
+            let adenaTotal = 0;
+            let ancientAdenaTotal = 0;
+            let otherMaterials = [];
+            
+            for (const [material, quantity] of sortedMaterials) {
+                if (material === "Adena") {
+                    adenaTotal = quantity;
+                } else if (material === "Ancient Adena") {
+                    ancientAdenaTotal = quantity;
+                } else {
+                    otherMaterials.push([material, quantity]);
+                }
+            }
+            
+            let html = `
+                <div class="table-container">
+                    <h3 class="${gradeClass}">${title}</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th>Cantidad Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            
+            // Mostrar Adena primero si existe
+            if (adenaTotal > 0) {
+                html += `
+                    <tr>
+                        <td>
+                            <div class="material-cell">
+                                ${getMaterialIcon("Adena")}
+                                <span class="material-name">Adena</span>
+                            </div>
+                        </td>
+                        <td class="material-count">${adenaTotal.toLocaleString()}</td>
+                    </tr>
+                `;
+            }
+            
+            // Mostrar Ancient Adena si existe
+            if (ancientAdenaTotal > 0) {
+                html += `
+                    <tr>
+                        <td>
+                            <div class="material-cell">
+                                ${getMaterialIcon("Ancient Adena")}
+                                <span class="material-name">Ancient Adena</span>
+                            </div>
+                        </td>
+                        <td class="material-count">${ancientAdenaTotal.toLocaleString()}</td>
+                    </tr>
+                `;
+            }
+            
+            // Mostrar el resto de materiales
+            for (const [material, quantity] of otherMaterials) {
+                html += `
+                    <tr>
+                        <td>
+                            <div class="material-cell">
+                                ${getMaterialIcon(material)}
+                                <span class="material-name">${material}</span>
+                            </div>
+                        </td>
+                        <td class="material-count">${quantity.toLocaleString()}</td>
+                    </tr>
+                `;
+            }
+            
+            // Agregar fila de total si hay más de un material
+            const totalItems = Object.keys(materials).length;
+            if (totalItems > 0) {
+                html += `
+                    <tr class="total-row">
+                        <td class="material-name">Total de materiales diferentes</td>
+                        <td class="material-count">${totalItems}</td>
+                    </tr>
+                `;
+            }
+            
+            html += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            return html;
+        }
+
+        // Función para crear el resumen por grado
+        function createGradeSummary(gradeTotals, gradeArmorCount) {
+            const gradeOrder = ["D", "C", "B", "A", "S", "Dynasty"];
+            let html = '';
+            
+            for (const grade of gradeOrder) {
+                if (gradeTotals[grade] && Object.keys(gradeTotals[grade]).length > 0) {
+                    const armorCount = gradeArmorCount[grade] || 0;
+                    const materialCount = Object.keys(gradeTotals[grade]).length;
+                    
+                    // Calcular total de Adena para este grado
+                    let adenaTotal = gradeTotals[grade]["Adena"] || 0;
+                    let ancientAdenaTotal = gradeTotals[grade]["Ancient Adena"] || 0;
+                    
+                    html += `
+                        <div class="grade-card ${grade.toLowerCase()}">
+                            <div class="grade-title">Grado ${grade}</div>
+                            <div class="grade-stats">
+                                <div><i class="fas fa-shield-alt"></i> Armaduras: ${armorCount}</div>
+                                <div><i class="fas fa-cube"></i> Materiales: ${materialCount}</div>
+                                <div><i class="fas fa-coins"></i> Adena: ${adenaTotal.toLocaleString()}</div>
+                                ${ancientAdenaTotal > 0 ? `<div><i class="fas fa-gem"></i> Ancient Adena: ${ancientAdenaTotal.toLocaleString()}</div>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            
+            return html;
+        }
+
+        // Función para actualizar la visualización
+        function updateDisplay() {
+            const target = document.getElementById("targetSelect").value;
+            const currentArmor = document.getElementById("currentArmorSelect").value;
+            
+            const resultsContainer = document.getElementById("resultsContainer");
+            const summaryContainer = document.getElementById("summaryContainer");
+            
+            resultsContainer.innerHTML = "";
+            summaryContainer.innerHTML = "";
+            
+            // Calcular materiales
+            const { totalMaterials, gradeTotals, gradeArmorCount, startIndex, endIndex } = calculateMaterials(target, currentArmor);
+            
+            // Mostrar información sobre qué se está calculando
+            let startText = "desde el inicio";
+            let endText = "";
+            
+            if (currentArmor !== "none") {
+                startText = `desde ${armorData[currentArmor].name}`;
+            }
+            
+            if (target === "grade-d") {
+                endText = "hasta completar Grado D";
+            } else if (target === "grade-c") {
+                endText = "hasta completar Grado C";
+            } else if (target === "grade-b") {
+                endText = "hasta completar Grado B";
+            } else if (target === "grade-a") {
+                endText = "hasta completar Grado A";
+            } else if (target === "grade-s") {
+                endText = "hasta completar Grado S";
+            } else if (target === "grade-dynasty") {
+                endText = "hasta completar Dynasty";
+            } else {
+                endText = "hasta completar todas las armaduras";
+            }
+            
+            const infoDiv = document.createElement("div");
+            infoDiv.className = "instructions";
+            infoDiv.innerHTML = `<p><span class="remaining-info"><i class="fas fa-calculator"></i> Calculando materiales ${startText} ${endText}.</span> Mostrando ${endIndex - startIndex} de ${armorProgression.length} armaduras en la progresión.</p>`;
+            resultsContainer.appendChild(infoDiv);
+            
+            // Mostrar resumen por grado
+            summaryContainer.innerHTML = createGradeSummary(gradeTotals, gradeArmorCount);
+            
+            // Mostrar tablas por grado
+            const gradeOrder = ["D", "C", "B", "A", "S", "Dynasty"];
+            
+            for (const grade of gradeOrder) {
+                if (gradeTotals[grade] && Object.keys(gradeTotals[grade]).length > 0) {
+                    const gradeClass = `grade-${grade.toLowerCase()}`;
+                    let gradeTitle = `Grado ${grade} - Materiales Totales`;
+                    
+                    // Personalizar título según el grado
+                    if (grade === "D") gradeTitle += " (Tier 1-2)";
+                    if (grade === "C") gradeTitle += " (Tier 1-3)";
+                    if (grade === "B") gradeTitle += " (Zubei, Avadon, Blue Wolf, Doom)";
+                    if (grade === "A") gradeTitle += " (Dark Crystal, Tallum, Nightmare, Majestic)";
+                    if (grade === "S") gradeTitle += " (Armor/Helmet/Gloves/Boots)";
+                    if (grade === "Dynasty") gradeTitle += " (Armadura final)";
+                    
+                    resultsContainer.innerHTML += createMaterialTable(gradeTotals[grade], gradeTitle, gradeClass);
+                }
+            }
+            
+            // Mostrar tabla con total general
+            if (Object.keys(totalMaterials).length > 0) {
+                resultsContainer.innerHTML += createMaterialTable(totalMaterials, "TOTAL GENERAL - Todos los materiales", "grade-all");
+            }
+        }
+
+        // Inicializar eventos
+        document.getElementById("targetSelect").addEventListener("change", updateDisplay);
+        document.getElementById("currentArmorSelect").addEventListener("change", updateDisplay);
+
+        // Mostrar la tabla inicial
+        updateDisplay();
+    </script>
+</body>
+</html>
