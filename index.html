@@ -1560,11 +1560,6 @@
                 endText = "hasta completar todas las armaduras";
             }
             
-            const infoDiv = document.createElement("div");
-            infoDiv.className = "instructions";
-            infoDiv.innerHTML = `<p><span class="remaining-info"><i class="fas fa-calculator"></i> Calculando materiales ${startText} ${endText}.</span> Mostrando ${endIndex - startIndex} de ${armorProgression.length} armaduras en la progresión.</p>`;
-            resultsContainer.appendChild(infoDiv);
-            
             // Mostrar resumen por grado
             summaryContainer.innerHTML = createGradeSummary(gradeTotals, gradeArmorCount);
             
