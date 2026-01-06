@@ -131,6 +131,10 @@
             border-left: 5px solid #FFD700;
         }
         
+        .table-container h3.grade-moirai {
+            border-left: 5px solid #FF4081;
+        }
+        
         table {
             width: 100%;
             border-collapse: collapse;
@@ -281,6 +285,10 @@
             border-left: 5px solid #FFD700;
         }
         
+        .grade-card.moirai {
+            border-left: 5px solid #FF4081;
+        }
+        
         .grade-title {
             font-weight: bold;
             font-size: 16px;
@@ -314,19 +322,20 @@
     </style>
 </head>
 <body>
-    <h1><i class="fas fa-shield-alt"></i> L2 RisenWorlds - Lista de Materiales Para Upgrade (Hasta Dynasty Lv3)</h1>
+    <h1><i class="fas fa-shield-alt"></i> L2 RisenWorlds - Lista de Materiales Para Upgrade (Hasta Moirai)</h1>
     
     <div class="controls">
         <div class="control-group">
             <label for="targetSelect"><i class="fas fa-bullseye"></i> Objetivo a alcanzar:</label>
             <select id="targetSelect">
-                <option value="all">Todas las armaduras (D → Dynasty)</option>
+                <option value="all">Todas las armaduras (D → Moirai)</option>
                 <option value="grade-d">Solo grado D (Tier 1-2)</option>
                 <option value="grade-c">Hasta grado C (Tier 1-3)</option>
                 <option value="grade-b">Hasta grado B (Zubei, Avadon, Blue Wolf, Doom)</option>
                 <option value="grade-a">Hasta grado A (Dark Crystal, Tallum, Nightmare, Majestic)</option>
                 <option value="grade-s">Hasta grado S</option>
                 <option value="grade-dynasty">Hasta Dynasty</option>
+                <option value="grade-moirai">Hasta Moirai</option>
             </select>
         </div>
         
@@ -391,6 +400,9 @@
                     <option value="Dynasty-L2">Grado Dynasty - Lv 2</option>
                     <option value="Dynasty-L3">Grado Dynasty - Lv 3</option>
                 </optgroup>
+                <optgroup label="Grado Moirai">
+                    <option value="Moirai-Helmet">Moirai Armor S80</option>
+                </optgroup>
             </select>
         </div>
         
@@ -401,7 +413,8 @@
             <strong>B:</strong> Zubei → Avadon → Blue Wolf → Doom<br>
             <strong>A:</strong> Dark Crystal → Tallum → Nightmare → Majestic<br>
             <strong>S:</strong> Grado S (Armor/Helmet/Gloves/Boots)<br>
-            <strong>Dynasty:</strong> Armadura final
+            <strong>Dynasty:</strong> Armadura final<br>
+            <strong>Moirai:</strong> Helmet, Armor, Pants, Glove, Shoes
         </div>
     </div>
     
@@ -1240,6 +1253,101 @@
                     "Crystal S": 145,
                     "Adena": 500000000
                 }
+            },
+            // Grado Moirai
+            "Moirai-Helmet": {
+                name: "Moirai Helmet",
+                grade: "Moirai",
+                tier: 1,
+                materials: {
+                    "Recipe Moirai Helmet": 3,
+                    "Raid Boss Cloth": 6,
+                    "Mutagen": 45,
+                    "Ancient Adena": 900000,
+                    "Corroded Reorin Mold": 18,
+                    "Quality Leather": 2080,
+                    "Orichalcum": 200,
+                    "Asofe": 308,
+                    "Gemstone S": 27,
+                    "Crystal S": 362,
+                    "Adena": 300000000
+                }
+            },
+            "Moirai-Armor": {
+                name: "Moirai Armor",
+                grade: "Moirai",
+                tier: 2,
+                materials: {
+                    "Recipe Moirai Armor": 3,
+                    "Raid Boss Cloth": 6,
+                    "Mutagen": 45,
+                    "Ancient Adena": 900000,
+                    "Corroded Reorin Mold": 18,
+                    "Metallic Fiber": 2000,
+                    "Quality Leather": 3000,
+                    "Orichalcum": 400,
+                    "Asofe": 700,
+                    "Gemstone S": 57,
+                    "Crystal S": 930,
+                    "Adena": 300000000
+                }
+            },
+            "Moirai-Pants": {
+                name: "Moirai Pants",
+                grade: "Moirai",
+                tier: 3,
+                materials: {
+                    "Recipe Moirai Pants": 3,
+                    "Raid Boss Cloth": 6,
+                    "Mutagen": 45,
+                    "Ancient Adena": 900000,
+                    "Corroded Reorin Mold": 18,
+                    "Metallic Fiber": 2000,
+                    "Quality Leather": 3000,
+                    "Orichalcum": 400,
+                    "Asofe": 700,
+                    "Gemstone S": 57,
+                    "Crystal S": 930,
+                    "Adena": 300000000
+                }
+            },
+            "Moirai-Glove": {
+                name: "Moirai Glove",
+                grade: "Moirai",
+                tier: 4,
+                materials: {
+                    "Recipe Moirai Glove": 3,
+                    "Raid Boss Cloth": 6,
+                    "Mutagen": 45,
+                    "Ancient Adena": 900000,
+                    "Corroded Warsmith Mold": 18,
+                    "Quality Leather": 1420,
+                    "High-grade Suede": 552,
+                    "Orichalcum": 150,
+                    "Asofe": 200,
+                    "Gemstone S": 18,
+                    "Crystal S": 311,
+                    "Adena": 300000000
+                }
+            },
+            "Moirai-Shoes": {
+                name: "Moirai Shoes",
+                grade: "Moirai",
+                tier: 5,
+                materials: {
+                    "Recipe Moirai Shoes": 3,
+                    "Raid Boss Cloth": 6,
+                    "Mutagen": 45,
+                    "Ancient Adena": 900000,
+                    "Corroded Warsmith Mold": 18,
+                    "Quality Leather": 1420,
+                    "High-grade Suede": 552,
+                    "Orichalcum": 150,
+                    "Asofe": 200,
+                    "Gemstone S": 18,
+                    "Crystal S": 311,
+                    "Adena": 300000000
+                }
             }
         };
 
@@ -1265,10 +1373,12 @@
             // Grado S
             "S-L1", "S-L2", "S-L3",
             // Grado Dynasty
-            "Dynasty-L1", "Dynasty-L2", "Dynasty-L3"
+            "Dynasty-L1", "Dynasty-L2", "Dynasty-L3",
+            // Grado Moirai
+            "Moirai-Armor",
         ];
 
-        // Iconos por defecto para materiales (Font Awesome)
+        // Iconos por defecto para materiales (Font Awesome) - ACTUALIZADO para incluir Recipes
         const materialIcons = {
             "Adena": "fa-coins",
             "Ancient Adena": "fa-gem",
@@ -1289,31 +1399,54 @@
             "Quality Leather": "fa-scroll",
             "Synthetic Braid": "fa-braille",
             "Metallic Fiber": "fa-link",
-            "High-Grade Suede": "fa-feather",
+            "High-grade Suede": "fa-feather",
             "Blacksmith's Frame": "fa-tools",
             "Asofe": "fa-shield",
             "Maestro Mold": "fa-toolbox",
             "Maestro Anvil Lock": "fa-lock",
             "Corroed Arcsmith Anvil": "fa-hammer",
-            "Corroded Reorin's Mold": "fa-toolbox",
-            "Corroded Warsmith's Mold": "fa-toolbox",
             "Corroded Reorin Mold": "fa-toolbox",
             "Corroded Warsmith Mold": "fa-toolbox",
             "Orichalcum": "fa-mountain",
-            "High-grade Suede": "fa-feather"
+            // Recipes - todos usarán recipe.png
+            "Recipe Moirai Helmet": "fa-scroll",
+            "Recipe Moirai Armor": "fa-scroll", 
+            "Recipe Moirai Pants": "fa-scroll",
+            "Recipe Moirai Glove": "fa-scroll",
+            "Recipe Moirai Shoes": "fa-scroll"
         };
 
-        // Función para obtener el icono de un material - CORREGIDA
+        // Función para obtener el icono de un material - MEJORADA para Recipes
         function getMaterialIcon(materialName) {
-            // Primero intenta cargar una imagen
-            // Limpia el nombre del archivo para evitar problemas con caracteres especiales
+            // Para los Recipes Moirai, usar siempre recipe.png
+            if (materialName.includes("Recipe Moirai")) {
+                const iconPath = `icons/recipe.png`;
+                
+                const iconDiv = document.createElement('div');
+                iconDiv.className = 'material-icon';
+                
+                const img = document.createElement('img');
+                img.src = iconPath;
+                img.alt = materialName;
+                img.onerror = function() {
+                    // Si la imagen falla, reemplaza con el icono de Font Awesome
+                    this.parentElement.innerHTML = `<i class="fas fa-scroll"></i>`;
+                };
+                
+                iconDiv.appendChild(img);
+                
+                // Convertimos el elemento DOM a string HTML
+                const tempDiv = document.createElement('div');
+                tempDiv.appendChild(iconDiv.cloneNode(true));
+                return tempDiv.innerHTML;
+            }
+            
+            // Para otros materiales, seguir el proceso normal
             const safeMaterialName = materialName.replace(/[\/\\?%*:|"<>]/g, '_').replace(/'/g, '');
             const iconPath = `icons/${safeMaterialName}.png`;
             
-            // Si no hay icono definido, usa uno por defecto
             const iconClass = materialIcons[materialName] || "fa-cube";
             
-            // Retorna el HTML correctamente escapado
             const iconDiv = document.createElement('div');
             iconDiv.className = 'material-icon';
             
@@ -1321,13 +1454,11 @@
             img.src = iconPath;
             img.alt = materialName;
             img.onerror = function() {
-                // Si la imagen falla, reemplaza con el icono de Font Awesome
                 this.parentElement.innerHTML = `<i class="fas ${iconClass}"></i>`;
             };
             
             iconDiv.appendChild(img);
             
-            // Convertimos el elemento DOM a string HTML
             const tempDiv = document.createElement('div');
             tempDiv.appendChild(iconDiv.cloneNode(true));
             return tempDiv.innerHTML;
@@ -1360,6 +1491,8 @@
                 endIndex = 42; // Hasta grado S (42 armaduras)
             } else if (target === "grade-dynasty") {
                 endIndex = 45; // Hasta Dynasty (45 armaduras)
+            } else if (target === "grade-moirai") {
+                endIndex = 50; // Hasta Moirai (50 armaduras)
             }
             
             // Sumar materiales de todas las armaduras en el rango
@@ -1489,7 +1622,7 @@
 
         // Función para crear el resumen por grado
         function createGradeSummary(gradeTotals, gradeArmorCount) {
-            const gradeOrder = ["D", "C", "B", "A", "S", "Dynasty"];
+            const gradeOrder = ["D", "C", "B", "A", "S", "Dynasty", "Moirai"];
             let html = '';
             
             for (const grade of gradeOrder) {
@@ -1552,6 +1685,8 @@
                 endText = "hasta completar Grado S";
             } else if (target === "grade-dynasty") {
                 endText = "hasta completar Dynasty";
+            } else if (target === "grade-moirai") {
+                endText = "hasta completar Moirai";
             } else {
                 endText = "hasta completar todas las armaduras";
             }
@@ -1560,7 +1695,7 @@
             summaryContainer.innerHTML = createGradeSummary(gradeTotals, gradeArmorCount);
             
             // Mostrar tablas por grado
-            const gradeOrder = ["D", "C", "B", "A", "S", "Dynasty"];
+            const gradeOrder = ["D", "C", "B", "A", "S", "Dynasty", "Moirai"];
             
             for (const grade of gradeOrder) {
                 if (gradeTotals[grade] && Object.keys(gradeTotals[grade]).length > 0) {
@@ -1570,6 +1705,7 @@
                     // Personalizar título según el grado
                     if (grade === "B") gradeTitle += " (Zubei, Avadon, Blue Wolf, Doom)";
                     if (grade === "A") gradeTitle += " (Dark Crystal, Tallum, Nightmare, Majestic)";
+                    if (grade === "Moirai") gradeTitle += " (Helmet, Armor, Pants, Glove, Shoes)";
                     
                     resultsContainer.innerHTML += createMaterialTable(gradeTotals[grade], gradeTitle, gradeClass);
                 }
