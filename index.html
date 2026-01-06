@@ -12,7 +12,7 @@
         }
         
         body {
-            background-color: #1a1a2e;
+            background-color: ##1c1c1c;
             color: #e0e0e0;
             padding: 20px;
             max-width: 1600px;
@@ -401,7 +401,7 @@
                     <option value="Dynasty-L3">Grado Dynasty - Lv 3</option>
                 </optgroup>
                 <optgroup label="Grado Moirai">
-                    <option value="Moirai-Helmet">Moirai Armor S80</option>
+                    <option value="moirai-full">Set Moirai Completo</option>
                 </optgroup>
             </select>
         </div>
@@ -414,7 +414,7 @@
             <strong>A:</strong> Dark Crystal → Tallum → Nightmare → Majestic<br>
             <strong>S:</strong> Grado S (Armor/Helmet/Gloves/Boots)<br>
             <strong>Dynasty:</strong> Armadura final<br>
-            <strong>Moirai:</strong> Helmet, Armor, Pants, Glove, Shoes
+            <strong>Moirai:</strong> Set completo (Helmet, Armor, Pants, Glove, Shoes)
         </div>
     </div>
     
@@ -1254,7 +1254,7 @@
                     "Adena": 500000000
                 }
             },
-            // Grado Moirai
+            // Datos de las piezas individuales de Moirai para usar en el cálculo
             "Moirai-Helmet": {
                 name: "Moirai Helmet",
                 grade: "Moirai",
@@ -1348,6 +1348,46 @@
                     "Crystal S": 311,
                     "Adena": 300000000
                 }
+            },
+            // Set Moirai completo (combinación de las 5 piezas)
+            "moirai-full": {
+                name: "Set Moirai Completo",
+                grade: "Moirai",
+                tier: 1,
+                materials: {
+                    // Sumar todos los recipes
+                    "Recipe Moirai Helmet": 3,
+                    "Recipe Moirai Armor": 3,
+                    "Recipe Moirai Pants": 3,
+                    "Recipe Moirai Glove": 3,
+                    "Recipe Moirai Shoes": 3,
+                    // Sumar Raid Boss Cloth (6 de cada pieza × 5 = 30)
+                    "Raid Boss Cloth": 30,
+                    // Sumar Mutagen (45 de cada pieza × 5 = 225)
+                    "Mutagen": 225,
+                    // Sumar Ancient Adena (900000 de cada pieza × 5 = 4,500,000)
+                    "Ancient Adena": 4500000,
+                    // Sumar Corroded Reorin Mold (18 de Helmet, Armor, Pants = 54)
+                    "Corroded Reorin Mold": 54,
+                    // Sumar Corroded Warsmith Mold (18 de Glove, Shoes = 36)
+                    "Corroded Warsmith Mold": 36,
+                    // Sumar Quality Leather
+                    "Quality Leather": 2080 + 3000 + 3000 + 1420 + 1420,
+                    // Sumar Metallic Fiber (2000 de Armor y Pants = 4000)
+                    "Metallic Fiber": 4000,
+                    // Sumar Orichalcum
+                    "Orichalcum": 200 + 400 + 400 + 150 + 150,
+                    // Sumar Asofe
+                    "Asofe": 308 + 700 + 700 + 200 + 200,
+                    // Sumar High-grade Suede (552 de Glove y Shoes = 1104)
+                    "High-grade Suede": 1104,
+                    // Sumar Gemstone S
+                    "Gemstone S": 27 + 57 + 57 + 18 + 18,
+                    // Sumar Crystal S
+                    "Crystal S": 362 + 930 + 930 + 311 + 311,
+                    // Sumar Adena (300,000,000 de cada pieza × 5 = 1,500,000,000)
+                    "Adena": 1500000000
+                }
             }
         };
 
@@ -1374,8 +1414,8 @@
             "S-L1", "S-L2", "S-L3",
             // Grado Dynasty
             "Dynasty-L1", "Dynasty-L2", "Dynasty-L3",
-            // Grado Moirai
-            "Moirai-Armor",
+            // Grado Moirai (las 5 piezas juntas como un set completo)
+            "moirai-full"
         ];
 
         // Iconos por defecto para materiales (Font Awesome) - ACTUALIZADO para incluir Recipes
@@ -1492,7 +1532,7 @@
             } else if (target === "grade-dynasty") {
                 endIndex = 45; // Hasta Dynasty (45 armaduras)
             } else if (target === "grade-moirai") {
-                endIndex = 50; // Hasta Moirai (50 armaduras)
+                endIndex = 46; // Hasta Moirai (46 armaduras - incluye moirai-full)
             }
             
             // Sumar materiales de todas las armaduras en el rango
@@ -1502,7 +1542,12 @@
                 const grade = armor.grade;
                 
                 // Contar armaduras por grado
-                gradeArmorCount[grade] = (gradeArmorCount[grade] || 0) + 1;
+                // Para moirai-full, contar como 1 armadura (set completo)
+                if (armorKey === "moirai-full") {
+                    gradeArmorCount[grade] = (gradeArmorCount[grade] || 0) + 1;
+                } else {
+                    gradeArmorCount[grade] = (gradeArmorCount[grade] || 0) + 1;
+                }
                 
                 // Inicializar el total por grado si no existe
                 if (!gradeTotals[grade]) {
@@ -1705,7 +1750,7 @@
                     // Personalizar título según el grado
                     if (grade === "B") gradeTitle += " (Zubei, Avadon, Blue Wolf, Doom)";
                     if (grade === "A") gradeTitle += " (Dark Crystal, Tallum, Nightmare, Majestic)";
-                    if (grade === "Moirai") gradeTitle += " (Helmet, Armor, Pants, Glove, Shoes)";
+                    if (grade === "Moirai") gradeTitle += " (Set completo: Helmet, Armor, Pants, Glove, Shoes)";
                     
                     resultsContainer.innerHTML += createMaterialTable(gradeTotals[grade], gradeTitle, gradeClass);
                 }
