@@ -775,11 +775,60 @@
             }
         ];
 
+        function getSafeImageName(materialName) {
+            // Mapeo manual para nombres problemáticos
+            const nameMapping = {
+                "Scroll EXP 20% (1 hour)": "Scroll exp",
+                "Dyes STR +1 CON -1": "Dyes",
+                "Enchant Armor D": "Enchant Armor D",
+                "Enchant Weapon C": "Enchant Weapon C",
+                "Enchant Weapon S": "Enchant Weapon S",
+                "Sword of Nightmare +6": "Sword of Nightmare +6",
+                "Tateossian Ring +4": "Tateossian Ring +4",
+                "Tateossian Necklace +4": "Tateossian Necklace +4",
+                "Tateossian Earring +5": "Tateossian Earring +5",
+                "Full Plate Shield +6": "Full Plate Shield +6",
+                "Heaven Divider +4": "Heaven Divider",
+                "Basalt Battlehammer +4": "Basalt Battlehammer",
+                "Draconic Leather Armor +5": "Draconic Leather Armor",
+                "Major Arcana Robe +5": "Major Arcana Robe",
+                "Sword Of Miracles +5": "Sword Of Miracles",
+                "Soul Separator +5": "Soul Separator",
+                "Soul Bow +5": "Soul Bow",
+                "Dynasty Earrings +4": "Dynasty Earrings",
+                "Dynasty Ring +4": "Dynasty Ring",
+                "Icarus Sawsword +4": "Icarus Sawsword",
+                "Arcana Mace +4": "Arcana Mace",
+                "Green Soul Crystal Stage 4": "Green Soul Crystal Stage 4",
+                "Musical Score - Theme of the Feast": "Theme of the feast",
+                "Recipe: Noble Elven Bow": "recipe c",
+                "Recipe: Elven Bow": "recipe d",
+                "Recipe: Spiritshot B": "recipe b",
+                "Recipe: Spiritshot C": "recipe c",
+                "Recipe: Spiritshot A": "recipe a",
+                "Reorin's Mold": "Corroded Reorin Mold",
+                "Recipe: Spiritshot S": "recipe",
+                "Warsmith Mold": "Corroded Warsmith Mold",
+                "Arcsmith Anvil": "Corroded Reorin Mold",
+                "Warsmith Holder": "Corroded Reorin Mold",
+                "Knight's Epaulette": "knight",
+                // Agrega más mapeos según necesites
+            };
+                
+                // Si existe en el mapeo, usa ese nombre
+                if (nameMapping[materialName]) {
+                    return nameMapping[materialName];
+                }
+                
+                // Si no, usa la sanitización original
+                return materialName.replace(/[\/\\?%*:|"<>]/g, '_').replace(/'/g, '');
+            }
+
         // Iconos para los materiales de rebirth (usando el mismo sistema que la calculadora)
         function getMaterialIconForRebirth(materialName) {
-            // Para crear nombres seguros para archivos
-            const safeMaterialName = materialName.replace(/[\/\\?%*:|"<>]/g, '_').replace(/'/g, '');
-            const iconPath = `icons/${safeMaterialName}.png`;
+            // Usar el nombre seguro para la imagen
+            const safeImageName = getSafeImageName(materialName);
+            const iconPath = `icons/${safeImageName}.png`;
             
             // Iconos de Font Awesome por defecto para algunos materiales
             const defaultIcons = {
