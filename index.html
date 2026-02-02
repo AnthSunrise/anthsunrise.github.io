@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L2 Risen - Materiales Para Armor Y Rebirths</title>
+    <title>L2 Risen - Guía General y Rebirths</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -82,272 +82,45 @@
             display: block;
         }
         
-        /* Estilos existentes para la calculadora */
-        .controls {
-            background-color: #16213e;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            align-items: center;
-            border: 1px solid #2a5caa;
-        }
-        
-        .control-group {
-            display: flex;
-            flex-direction: column;
-            min-width: 250px;
-        }
-        
-        label {
-            margin-bottom: 8px;
-            color: #a3d0ff;
-            font-weight: bold;
-        }
-        
-        select {
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #0f3460;
-            color: white;
-            border: 1px solid #2a5caa;
-            font-size: 14px;
-        }
-        
-        select:focus {
-            outline: none;
-            border-color: #4d9fff;
-            box-shadow: 0 0 5px rgba(77, 159, 255, 0.5);
-        }
-        
-        .tier-info {
-            background-color: #0f3460;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-size: 14px;
-            border-left: 4px solid #4d9fff;
-            flex: 1;
-            max-width: 400px;
-        }
-        
-        .results-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .table-container {
-            flex: 1;
-            min-width: 300px;
-            background-color: #16213e;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid #2a5caa;
-        }
-        
-        .table-container h3 {
-            background-color: #0f3460;
-            margin: 0;
-            padding: 15px;
-            color: #a3d0ff;
-            border-bottom: 1px solid #2a5caa;
-        }
-        
-        .table-container h3.grade-d {
-            border-left: 5px solid #4CAF50;
-        }
-        
-        .table-container h3.grade-c {
-            border-left: 5px solid #2196F3;
-        }
-        
-        .table-container h3.grade-b {
-            border-left: 5px solid #9C27B0;
-        }
-        
-        .table-container h3.grade-a {
-            border-left: 5px solid #FF9800;
-        }
-        
-        .table-container h3.grade-s {
-            border-left: 5px solid #FF5722;
-        }
-        
-        .table-container h3.grade-dynasty {
-            border-left: 5px solid #FFD700;
-        }
-        
-        .table-container h3.grade-moirai {
-            border-left: 5px solid #FF4081;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        th {
-            background-color: #1a3a6a;
-            padding: 12px 10px;
-            text-align: left;
-            color: #a3d0ff;
-            font-weight: bold;
-        }
-        
-        td {
-            padding: 10px;
-            border-bottom: 1px solid #2a5caa;
-        }
-        
-        tr:nth-child(even) {
-            background-color: rgba(15, 52, 96, 0.3);
-        }
-        
-        tr:hover {
-            background-color: rgba(77, 159, 255, 0.1);
-        }
-        
-        .material-cell {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .material-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 4px;
-            border: 1px solid #2a5caa;
-            background-color: #0f3460;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: #a3d0ff;
-            flex-shrink: 0;
-        }
-        
-        .material-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 3px;
-        }
-        
-        .material-name {
-            font-weight: bold;
-            color: #d1e7ff;
-        }
-        
-        .material-count {
-            text-align: right;
-            font-family: monospace;
-            font-size: 16px;
-            color: #ffffff;
-        }
-        
-        .total-row {
-            background-color: rgba(26, 58, 106, 0.8) !important;
-            font-weight: bold;
-            color: #ffffff;
-        }
-        
-        .grade-total {
-            background-color: #1a3a6a;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-top: 15px;
-            display: inline-block;
-            font-weight: bold;
-            color: #ffffff;
-        }
-        
-        .instructions {
+        /* Estilos para la pestaña de Guía General */
+        .guide-container {
             background-color: rgba(15, 52, 96, 0.5);
-            padding: 15px;
-            border-radius: 5px;
+            padding: 40px;
+            border-radius: 10px;
+            border: 2px dashed #2a5caa;
+            text-align: center;
             margin-top: 20px;
-            border-left: 4px solid #4d9fff;
-            font-size: 14px;
-            line-height: 1.5;
         }
         
-        .highlight {
-            color: #FFD700;
-            font-weight: bold;
-        }
-        
-        .remaining-info {
-            color: #FF9800;
-            font-weight: bold;
-        }
-        
-        .image-info {
-            background-color: rgba(15, 52, 96, 0.3);
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            font-size: 13px;
-            color: #a3d0ff;
-        }
-        
-        .grade-summary {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+        .guide-icon {
+            font-size: 64px;
+            color: #4d9fff;
             margin-bottom: 20px;
         }
         
-        .grade-card {
-            background-color: #16213e;
-            border-radius: 8px;
-            padding: 15px;
-            border: 1px solid #2a5caa;
-            min-width: 200px;
-            flex: 1;
-        }
-        
-        .grade-card.d {
-            border-left: 5px solid #4CAF50;
-        }
-        
-        .grade-card.c {
-            border-left: 5px solid #2196F3;
-        }
-        
-        .grade-card.b {
-            border-left: 5px solid #9C27B0;
-        }
-        
-        .grade-card.a {
-            border-left: 5px solid #FF9800;
-        }
-        
-        .grade-card.s {
-            border-left: 5px solid #FF5722;
-        }
-        
-        .grade-card.dynasty {
-            border-left: 5px solid #FFD700;
-        }
-        
-        .grade-card.moirai {
-            border-left: 5px solid #FF4081;
-        }
-        
-        .grade-title {
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 10px;
-            color: #d1e7ff;
-        }
-        
-        .grade-stats {
-            font-size: 14px;
+        .guide-message {
+            font-size: 24px;
             color: #a3d0ff;
+            margin-bottom: 20px;
+        }
+        
+        .guide-submessage {
+            font-size: 16px;
+            color: #6ab7ff;
+            line-height: 1.6;
+        }
+        
+        /* Estilos existentes para la calculadora (ahora ocultos) */
+        .controls {
+            display: none;
+        }
+        
+        .tier-info {
+            display: none;
+        }
+        
+        .results-container {
+            display: none;
         }
         
         /* Estilos para la lista de Rebirth */
@@ -399,6 +172,13 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            flex: 1;
+            min-width: 0; /* IMPORTANTE: Permite que el texto se ajuste */
+        }
+        
+        .rebirth-material-text {
+            flex: 1;
+            min-width: 0; /* Permite que el texto se ajuste dentro del contenedor */
         }
         
         .rebirth-material-count {
@@ -410,6 +190,56 @@
             border-radius: 4px;
             min-width: 100px;
             text-align: right;
+            flex-shrink: 0;
+        }
+        
+        /* Estilos para notas */
+        .rebirth-note {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #FFC107;
+            font-size: 14px;
+            color: #FFD54F;
+            border-radius: 4px;
+        }
+        
+        /* Estilos para texto de color especial */
+        .special-text {
+            color: #FFD700 !important;
+            font-weight: bold;
+        }
+        
+        .quest-text {
+            color: #4CAF50 !important;
+            font-weight: bold;
+        }
+        
+        .material-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            border: 1px solid #2a5caa;
+            background-color: #0f3460;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #a3d0ff;
+            flex-shrink: 0;
+        }
+        
+        .material-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+        
+        /* Clase para mantener partes específicas juntas */
+        .inline-text {
+            white-space: nowrap;
+            display: inline;
         }
         
         @media (max-width: 768px) {
@@ -426,137 +256,61 @@
                 grid-template-columns: 1fr;
             }
             
-            .results-container {
-                flex-direction: column;
+            .guide-container {
+                padding: 20px;
             }
             
-            .controls {
+            .guide-icon {
+                font-size: 48px;
+            }
+            
+            .guide-message {
+                font-size: 20px;
+            }
+            
+            .rebirth-material {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 5px;
             }
             
-            .control-group {
+            .rebirth-material-count {
+                align-self: flex-end;
                 width: 100%;
-            }
-            
-            .grade-summary {
-                flex-direction: column;
+                text-align: right;
             }
         }
     </style>
 </head>
 <body>
-    <h1><i class="fas fa-shield-alt"></i> L2 RisenWorlds - Material Calculator & Rebirth Requirements</h1>
+    <h1><i class="fas fa-shield-alt"></i> L2 RisenWorlds - Guía General y Requisitos de Rebirth</h1>
     
     <div class="tab-container">
         <div class="tabs">
-            <div class="tab active" data-tab="calculator">Armaduras</div>
+            <div class="tab active" data-tab="guide">Guía General</div>
             <div class="tab" data-tab="rebirth">Rebirths</div>
         </div>
         
-        <div id="calculator-tab" class="tab-content active">
-            <div class="controls">
-                <div class="control-group">
-                    <label for="targetSelect"><i class="fas fa-bullseye"></i> Objetivo a alcanzar:</label>
-                    <select id="targetSelect">
-                        <option value="all">Todas las armaduras (D → Moirai)</option>
-                        <option value="grade-d">Solo grado D (Tier 1-2)</option>
-                        <option value="grade-c">Hasta grado C (Tier 1-3)</option>
-                        <option value="grade-b">Hasta grado B (Zubei, Avadon, Blue Wolf, Doom)</option>
-                        <option value="grade-a">Hasta grado A (Dark Crystal, Tallum, Nightmare, Majestic)</option>
-                        <option value="grade-s">Hasta grado S</option>
-                        <option value="grade-dynasty">Hasta Dynasty</option>
-                        <option value="grade-moirai">Hasta Moirai</option>
-                    </select>
+        <div id="guide-tab" class="tab-content active">
+            <div class="guide-container">
+                <div class="guide-icon">
+                    <i class="fas fa-book-open"></i>
                 </div>
-                
-                <div class="control-group">
-                    <label for="currentArmorSelect"><i class="fas fa-user"></i> Armadura que ya tengo:</label>
-                    <select id="currentArmorSelect">
-                        <option value="none">No tengo ninguna (comenzar desde 0)</option>
-                        <optgroup label="Grado D">
-                            <option value="D-T1-L1">Grado D - Tier 1 - Lv 1</option>
-                            <option value="D-T1-L2">Grado D - Tier 1 - Lv 2</option>
-                            <option value="D-T1-L3">Grado D - Tier 1 - Lv 3</option>
-                            <option value="D-T2-L1">Grado D - Tier 2 - Lv 1</option>
-                            <option value="D-T2-L2">Grado D - Tier 2 - Lv 2</option>
-                            <option value="D-T2-L3">Grado D - Tier 2 - Lv 3</option>
-                        </optgroup>
-                        <optgroup label="Grado C">
-                            <option value="C-T1-L1">Grado C - Tier 1 - Lv 1</option>
-                            <option value="C-T1-L2">Grado C - Tier 1 - Lv 2</option>
-                            <option value="C-T1-L3">Grado C - Tier 1 - Lv 3</option>
-                            <option value="C-T2-L1">Grado C - Tier 2 - Lv 1</option>
-                            <option value="C-T2-L2">Grado C - Tier 2 - Lv 2</option>
-                            <option value="C-T2-L3">Grado C - Tier 2 - Lv 3</option>
-                            <option value="C-T3-L1">Grado C - Tier 3 - Lv 1</option>
-                            <option value="C-T3-L2">Grado C - Tier 3 - Lv 2</option>
-                            <option value="C-T3-L3">Grado C - Tier 3 - Lv 3</option>
-                        </optgroup>
-                        <optgroup label="Grado B">
-                            <option value="B-Zubei-L1">Grado B - Zubei - Lv 1</option>
-                            <option value="B-Zubei-L2">Grado B - Zubei - Lv 2</option>
-                            <option value="B-Zubei-L3">Grado B - Zubei - Lv 3</option>
-                            <option value="B-Avadon-L1">Grado B - Avadon - Lv 1</option>
-                            <option value="B-Avadon-L2">Grado B - Avadon - Lv 2</option>
-                            <option value="B-Avadon-L3">Grado B - Avadon - Lv 3</option>
-                            <option value="B-BlueWolf-L1">Grado B - Blue Wolf - Lv 1</option>
-                            <option value="B-BlueWolf-L2">Grado B - Blue Wolf - Lv 2</option>
-                            <option value="B-BlueWolf-L3">Grado B - Blue Wolf - Lv 3</option>
-                            <option value="B-Doom-L1">Grado B - Doom - Lv 1</option>
-                            <option value="B-Doom-L2">Grado B - Doom - Lv 2</option>
-                            <option value="B-Doom-L3">Grado B - Doom - Lv 3</option>
-                        </optgroup>
-                        <optgroup label="Grado A">
-                            <option value="A-DarkCrystal-L1">Grado A - Dark Crystal - Lv 1</option>
-                            <option value="A-DarkCrystal-L2">Grado A - Dark Crystal - Lv 2</option>
-                            <option value="A-DarkCrystal-L3">Grado A - Dark Crystal - Lv 3</option>
-                            <option value="A-Tallum-L1">Grado A - Tallum - Lv 1</option>
-                            <option value="A-Tallum-L2">Grado A - Tallum - Lv 2</option>
-                            <option value="A-Tallum-L3">Grado A - Tallum - Lv 3</option>
-                            <option value="A-Nightmare-L1">Grado A - Nightmare - Lv 1</option>
-                            <option value="A-Nightmare-L2">Grado A - Nightmare - Lv 2</option>
-                            <option value="A-Nightmare-L3">Grado A - Nightmare - Lv 3</option>
-                            <option value="A-Majestic-L1">Grado A - Majestic - Lv 1</option>
-                            <option value="A-Majestic-L2">Grado A - Majestic - Lv 2</option>
-                            <option value="A-Majestic-L3">Grado A - Majestic - Lv 3</option>
-                        </optgroup>
-                        <optgroup label="Grado S">
-                            <option value="S-L1">Grado S - Lv 1</option>
-                            <option value="S-L2">Grado S - Lv 2</option>
-                            <option value="S-L3">Grado S - Lv 3</option>
-                        </optgroup>
-                        <optgroup label="Grado Dynasty">
-                            <option value="Dynasty-L1">Grado Dynasty - Lv 1</option>
-                            <option value="Dynasty-L2">Grado Dynasty - Lv 2</option>
-                            <option value="Dynasty-L3">Grado Dynasty - Lv 3</option>
-                        </optgroup>
-                        <optgroup label="Grado Moirai">
-                            <option value="moirai-full">Set Moirai Completo</option>
-                        </optgroup>
-                    </select>
+                <div class="guide-message">
+                    Guía General en Desarrollo
                 </div>
-                
-                <div class="tier-info">
-                    <strong><i class="fas fa-layer-group"></i> Progresión de armaduras:</strong><br>
-                    <strong>D:</strong> Tier 1 → Tier 2<br>
-                    <strong>C:</strong> Tier 1 → Tier 2 → Tier 3<br>
-                    <strong>B:</strong> Zubei → Avadon → Blue Wolf → Doom<br>
-                    <strong>A:</strong> Dark Crystal → Tallum → Nightmare → Majestic<br>
-                    <strong>S:</strong> Grado S (Armor/Helmet/Gloves/Boots)<br>
-                    <strong>Dynasty:</strong> Armadura final<br>
-                    <strong>Moirai:</strong> Set completo (Helmet, Armor, Pants, Glove, Shoes)
+                <div class="guide-submessage">
+                    Estamos trabajando en una guía completa para L2 RisenWorlds que incluirá:<br>
+                    - Progresión de personajes<br>
+                    - Ubicaciones de farmeo<br>
+                    - Información general<br>
+                    - Sistema de craft<br>
+                    - Colecciones<br>
+                    - Upgrade de armaduras<br>
+                    - Explicación de instancias<br>
+                    <br>
+                    ¡Vuelve pronto para más información!
                 </div>
-            </div>
-            
-            <div id="summaryContainer" class="grade-summary">
-                <!-- Resumen por grado se generará aquí -->
-            </div>
-            
-            <h2><i class="fas fa-calculator"></i> Materiales Requeridos</h2>
-            
-            <div class="results-container" id="resultsContainer">
-                <!-- Los resultados se generarán aquí con JavaScript -->
             </div>
         </div>
         
@@ -568,7 +322,7 @@
     </div>
 
     <script>
-        // Datos de los rebirths
+        // Datos de los rebirths (completo hasta el 42)
         const rebirthData = [
             {
                 id: 1,
@@ -610,7 +364,8 @@
                     { name: "Manticore Skin Boot Lining", count: 2 },
                     { name: "Brigandine Helmet Design", count: 2 },
                     { name: "Mithril Gloves Design", count: 50 }
-                ]
+                ],
+                notes: ["Para conseguir las coins se necesita iniciar la Quest: Coins of Magic"]
             },
             {
                 id: 5,
@@ -620,7 +375,7 @@
                     { name: "Gold Wyvern", count: 400 },
                     { name: "Blood Medusa", count: 400 },
                     { name: "Silver Unicorn", count: 400 },
-                    { name: "Full Plate Shield +6", count: 1 },
+                    { name: "Full Plate Shield <+6>", count: 1 },
                     { name: "Bonebreaker head", count: 1 },
                     { name: "Heavy Bone Club Head", count: 1 }
                 ]
@@ -633,7 +388,7 @@
                     { name: "Earth Egg", count: 5 },
                     { name: "Nonliving Nucleus", count: 5 },
                     { name: "Angelic Essence", count: 5 },
-                    { name: "Sword of Nightmare +6", count: 1 }
+                    { name: "Sword of Nightmare <+6>", count: 1 }
                 ]
             },
             {
@@ -642,9 +397,9 @@
                 materials: [
                     { name: "Adena", count: 45000000 },
                     { name: "Crafted Leather", count: 10000 },
-                    { name: "Tateossian Ring +4", count: 1 },
-                    { name: "Tateossian Necklace +4", count: 1 },
-                    { name: "Tateossian Earring +5", count: 1 }
+                    { name: "Tateossian Ring <+4>", count: 1 },
+                    { name: "Tateossian Necklace <+4>", count: 1 },
+                    { name: "Tateossian Earring <+5>", count: 1 }
                 ]
             },
             {
@@ -664,8 +419,8 @@
                 title: "Rebirth 9",
                 materials: [
                     { name: "Adena", count: 55000000 },
-                    { name: "Heaven Divider +4", count: 1 },
-                    { name: "Basalt Battlehammer +4", count: 1 },
+                    { name: "Heaven Divider <+4>", count: 1 },
+                    { name: "Basalt Battlehammer <+4>", count: 1 },
                     { name: "Moonstone", count: 500 },
                     { name: "Mutagen", count: 30 }
                 ]
@@ -675,8 +430,8 @@
                 title: "Rebirth 10",
                 materials: [
                     { name: "Adena", count: 60000000 },
-                    { name: "Draconic Leather Armor +5", count: 1 },
-                    { name: "Major Arcana Robe +5", count: 1 },
+                    { name: "Draconic Leather Armor <+5>", count: 1 },
+                    { name: "Major Arcana Robe <+5>", count: 1 },
                     { name: "Mold Glue", count: 3500 },
                     { name: "Mold Lubricant", count: 3500 },
                     { name: "Mold Hardener", count: 3500 },
@@ -688,9 +443,9 @@
                 title: "Rebirth 11",
                 materials: [
                     { name: "Adena", count: 65000000 },
-                    { name: "Sword Of Miracles +5", count: 1 },
-                    { name: "Soul Separator +5", count: 1 },
-                    { name: "Soul Bow +5", count: 1 },
+                    { name: "Sword Of Miracles <+5>", count: 1 },
+                    { name: "Soul Separator <+5>", count: 1 },
+                    { name: "Soul Bow <+5>", count: 1 },
                     { name: "Recipe: Noble Elven Bow", count: 5 },
                     { name: "Recipe: Elven Bow", count: 15 }
                 ]
@@ -727,8 +482,8 @@
                 title: "Rebirth 14",
                 materials: [
                     { name: "Adena", count: 100000000 },
-                    { name: "Dynasty Earrings +4", count: 1 },
-                    { name: "Dynasty Ring +4", count: 1 },
+                    { name: "Dynasty Earrings <+4>", count: 1 },
+                    { name: "Dynasty Ring <+4>", count: 1 },
                     { name: "Ancient Tome Of the Demon", count: 3000 },
                     { name: "Holy Stone", count: 100 },
                     { name: "Fire Stone", count: 100 },
@@ -740,8 +495,8 @@
                 title: "Rebirth 15",
                 materials: [
                     { name: "Adena", count: 110000000 },
-                    { name: "Icarus Sawsword +4", count: 1 },
-                    { name: "Arcana Mace +4", count: 1 },
+                    { name: "Icarus Sawsword <+4>", count: 1 },
+                    { name: "Arcana Mace <+4>", count: 1 },
                     { name: "Giant Codex", count: 100 },
                     { name: "Giant Codex - Mastery", count: 10 },
                     { name: "Mutagen", count: 30 }
@@ -757,7 +512,8 @@
                     { name: "Knight's Epaulette", count: 10000 },
                     { name: "Crystal S", count: 10000 },
                     { name: "Mutagen", count: 30 }
-                ]
+                ],
+                notes: ["Para conseguir Knight's Epaulette hay que farmear fortalezas"]
             },
             {
                 id: 17,
@@ -798,7 +554,7 @@
                     { name: "Raid Boss Cloth", count: 15 },
                     { name: "Mutagen", count: 30 }
                 ],
-                info: "Tattered Monk Clothes requiere la quest The One Who Ends Silence."
+                notes: ["Tattered Monk Clothes requiere la quest The One Who Ends Silence."]
             },
             {
                 id: 20,
@@ -810,7 +566,7 @@
                     { name: "Gold Bar", count: 1 },
                     { name: "Mutagen", count: 30 }
                 ],
-                info: "Gold Bar se consigue en las grocer por 1.35b Adena."
+                notes: ["Las Gold Bar se consiguen en las groceries por Adena."]
             },
             {
                 id: 21,
@@ -825,23 +581,332 @@
                     { name: "Icarus Hall", count: 1 },
                     { name: "Mutagen", count: 30 }
                 ],
+                notes: ["Los scrolls of Ancient Magic se consiguen con la quest Yoke of the Past en catacumbas/necropolis"]
+            },
+            {
+                id: 22,
+                title: "Rebirth 22",
+                materials: [
+                    { name: "Adena", count: 240000000 },
+                    { name: "Moirai Ring <+5>", count: 1 },
+                    { name: "Moirai Earring <+5>", count: 1 },
+                    { name: "Moirai Necklace <+5>", count: 1 },
+                    { name: "Enchant Weapon A", count: 20 },
+                    { name: "Dynasty Soul", count: 5000 },
+                    { name: "Mutagen", count: 30 }
+                ]
+            },
+            {
+                id: 23,
+                title: "Rebirth 23",
+                materials: [
+                    { name: "Adena", count: 280000000 },
+                    { name: "Dark Crystal Helmet <+4>", count: 1 },
+                    { name: "Tallum Helmet <+4>", count: 1 },
+                    { name: "Helm of Nightmare <+4>", count: 1 },
+                    { name: "Imperial Crusader Helmet <+4>", count: 1 },
+                    { name: "Draconic Leather Helmet <+4>", count: 1 },
+                    { name: "Major Arcana Circlet <+4>", count: 1 },
+                    { name: "Mutagen", count: 30 }
+                ]
+            },
+            {
+                id: 24,
+                title: "Rebirth 24",
+                materials: [
+                    { name: "Adena", count: 340000000 },
+                    { name: "Dynasty Helmet <+4>", count: 1 },
+                    { name: "Dynasty Circlet <+4>", count: 1 },
+                    { name: "Dynasty Leather Helmet <+4>", count: 1 },
+                    { name: "Vesper Helmet <+4>", count: 1 },
+                    { name: "Vesper Leather Helmet <+4>", count: 1 },
+                    { name: "Vesper Circlet <+4>", count: 1 },
+                    { name: "Mutagen", count: 30 }
+                ]
+            },
+            {
+                id: 25,
+                title: "Rebirth 25",
+                materials: [
+                    { name: "Adena", count: 380000000 },
+                    { name: "Book Improvement C", count: 50 },
+                    { name: "Book Improvement B", count: 22 },
+                    { name: "Injector Formula", count: 35 }
+                ],
+                notes: ["Las Injector Formula se consiguen extrayendo Injectores en Alt+B > Crafting > Dismantle Item > Formulas"]
+            },
+            {
+                id: 26,
+                title: "Rebirth 26",
+                materials: [
+                ],
+                notes: ["He perdido la información, actualizaré cuando le haga rb a la mochila."]
+            },
+            {
+                id: 27,
+                title: "Rebirth 27",
+                materials: [
+                ],
+                notes: ["He perdido la información, actualizaré cuando le haga rb a la mochila."]
+            },
+            {
+                id: 28,
+                title: "Rebirth 28",
+                materials: [
+                ],
+                notes: ["He perdido la información, actualizaré cuando le haga rb a la mochila."]
+            },
+            {
+                id: 29,
+                title: "Rebirth 29",
+                materials: [
+                    { name: "Adena", count: 650000000 },
+                    { name: "Plated Leather Set", count: 7 },
+                    { name: "Karmian Set", count: 7 },
+                    { name: "Mutagen", count: 50 }
+                ]
+            },
+            {
+                id: 30,
+                title: "Rebirth 30",
+                materials: [
+                    { name: "Adena", count: 700000000 },
+                    { name: "Homunkulu's Sword - Acumen <+7>", count: 1 },
+                    { name: "Eminence Bow - Cheap Shot <+7>", count: 1 },
+                    { name: "Mutagen", count: 50 }
+                ]
+            },
+            {
+                id: 31,
+                title: "Rebirth 31",
+                materials: [
+                    { name: "Quest: More Than Meets The Eye", count: 1 },
+                    { name: "Adena", count: 750000000 },
+                    { name: "Gold Bar", count: 2 },
+                    { name: "Mutagen", count: 50 }
+                ]
+            },
+            {
+                id: 32,
+                title: "Rebirth 32",
+                materials: [
+                    { name: "Quest: Sweet Whisper", count: 1 },
+                    { name: "Adena", count: 850000000 },
+                    { name: "Abadon Robe Set", count: 1 },
+                    { name: "Blue Wolf Robe Set", count: 1 },
+                    { name: "Vesper Robe Set", count: 1 },
+                    { name: "Recipe - Eternal Gloves", count: 1 },
+                    { name: "Recipe - Eternal Turnic", count: 1 },
+                    { name: "Recipe - Eternal Gaiters", count: 1 },
+                    { name: "Mutagen", count: 50 }
+                ]
+            },
+            {
+                id: 33,
+                title: "Rebirth 33",
+                materials: [
+                    { name: "Adena", count: 950000000 },
+                    { name: "Armor Piece", count: 3000 },
+                    { name: "Stone of Purity", count: 35000 },
+                    { name: "Star Crystal piece", count: 100 },
+                    { name: "Recipe Twilight Gauntlet", count: 1 },
+                    { name: "Recipe Twilight Leather Helmet", count: 1 },
+                    { name: "Recipe Twilight Circlet", count: 1 }
+                ]
+            },
+            {
+                id: 34,
+                title: "Rebirth 34",
+                materials: [
+                    { name: "Quest: Secret Buried in the swamp", count: 1 },
+                    { name: "Adena", count: 1100000000 },
+                    { name: "Gray Fang Stakato", count: 5000 },
+                    { name: "Vesper Earring <+6>", count: 1 },
+                    { name: "Vesper Ring <+6>", count: 1 },
+                    { name: "Vesper Necklace <+6>", count: 1 },
+                    { name: "Mutagen", count: 50 }
+                ]
+            },
+            {
+                id: 35,
+                title: "Rebirth 35",
+                materials: [
+                    { name: "Adena", count: 1300000000 },
+                    { name: "Gold Bar", count: 5 },
+                    { name: "Reorin's Mold", count: 50 },
+                    { name: "Warsmith's Mold", count: 50 },
+                    { name: "Warsmith's Holder", count: 50 },
+                    { name: "Arcsmith's Anvil", count: 50 },
+                    { name: "Ether", count: 1000 },
+                    { name: "Mutagen", count: 200 }
+                ]
+            },
+            {
+                id: 36,
+                title: "Rebirth 36",
+                materials: [
+                    { name: "Adena", count: 1500000000 },
+                    { name: "Gold Bar", count: 5 },
+                    { name: "Enchant Weapon S", count: 500 },
+                    { name: "Enchant Armor S", count: 1500 },
+                    { name: "Crystal A", count: 15000 },
+                    { name: "Crystal S", count: 15000 },
+                    { name: "Mutagen", count: 100 }
+                ]
+            },
+            {
+                id: 37,
+                title: "Rebirth 37",
+                materials: [
+                    { name: "Quest: Deliver Goods", count: 1 },
+                    { name: "Quest: Letters Of Love", count: 1 },
+                    { name: "Quest: Miners Favor", count: 1 },
+                    { name: "Adena", count: 1700000000 },
+                    { name: "Elegia Ring <+6>", count: 1 },
+                    { name: "Calculator", count: 1 },
+                    { name: "Mutagen", count: 100 }
+                ]
+            },
+            {
+                id: 38,
+                title: "Rebirth 38",
+                materials: [
+                    { name: "Adena", count: 2500000000 },
+                    { name: "Vesper Breastplate", count: 1 },
+                    { name: "Vesper Leather Leggings", count: 1 },
+                    { name: "Vesper Glove", count: 1 },
+                    { name: "Robe of Nightmare Set", count: 1 },
+                    { name: "Majestic Robe Set", count: 1 },
+                    { name: "Crystal: Accessory", count: 60 },
+                    { name: "Transformation Scroll: Ol Mahum - Event", count: 1 },
+                    { name: "Mutagen", count: 100 }
+                ]
+            },
+            {
+                id: 39,
+                title: "Rebirth 39",
+                materials: [
+                    { name: "Adena", count: 3000000000 },
+                    { name: "Reorin's Mold", count: 200 },
+                    { name: "Warsmith's Mold", count: 200 },
+                    { name: "Warsmith's Holder", count: 200 },
+                    { name: "Arcsmith's Anvil", count: 200 },
+                    { name: "Petra", count: 2000 },
+                    { name: "Mithril Alloy", count: 5000 },
+                    { name: "Processed steel", count: 30 }
+                ],
+                notes: ["El Rebirth dice 'Processed Steel' pero se refiere a Hardened Steel en Resources"]
+            },
+            {
+                id: 40,
+                title: "Rebirth 40",
+                materials: [
+                    { name: "Adena", count: 3500000000 },
+                    { name: "Leonard", count: 20000 },
+                    { name: "Adamantine", count: 20000 },
+                    { name: "Orichalcum", count: 20000 },
+                    { name: "Blessed Enchant Weapon S", count: 20 },
+                    { name: "<Draconic Bow - Earth +6>", count: 1 },
+                    { name: "Mutagen", count: 100 }
+                ],
+                notes: ["El Draconic Bow es Foundation, requiere craftear."]
+            },
+            {
+                id: 41,
+                title: "Rebirth 41",
+                materials: [
+                    { name: "Adena", count: 4000000000 },
+                    { name: "Garden Flower", count: 100 },
+                    { name: "Talisman Magmeld Lv. 2", count: 1 },
+                    { name: "<Dark Crystal Glove - Heavy +5>", count: 1 },
+                    { name: "Mutagen", count: 100 }
+                ],
+                notes: ["El Dark Crystal Glove es Foundation, requiere craftear."]
+            },
+            {
+                id: 42,
+                title: "Rebirth 42",
+                materials: [
+                    { name: "Quest: Bring up with the love", count: 1 },
+                    { name: "Quest: Red eyed invaders", count: 1 },
+                    { name: "Adena", count: 4500000000 },
+                    { name: "Raid Boss Cloth", count: 100 },
+                    { name: "Steel Wire", count: 1000 },
+                    { name: "Cokes", count: 1500 },
+                    { name: "Armor Piece", count: 10000 },
+                    { name: "Mutagen", count: 100 }
+                ]
             }
         ];
 
+        // Función para formatear el nombre del material con colores especiales usando <>
+        function formatMaterialName(materialName) {
+            // Verificar si es una quest
+            if (materialName.toLowerCase().includes("quest:")) {
+                // Para quests, mantener todo junto con color verde
+                return `<span class="quest-text">${materialName}</span>`;
+            }
+            
+            // Si TODO el texto está entre <>, aplicar special-text pero permitir división
+            if (materialName.startsWith('<') && materialName.endsWith('>')) {
+                const content = materialName.replace(/[<>]/g, '');
+                return `<span class="special-text allow-wrap">${content}</span>`;
+            }
+            
+            // Buscar texto entre <> y aplicarle la clase special-text
+            let formattedName = materialName;
+            const matches = materialName.match(/<([^>]+)>/g);
+            
+            if (matches) {
+                matches.forEach(match => {
+                    const content = match.replace(/[<>]/g, '');
+                    // Solo aplicar nowrap a partes específicas como +6, +5
+                    if (content.match(/^\+\d+$/)) {
+                        formattedName = formattedName.replace(
+                            match, 
+                            `<span class="special-text inline-text">${content}</span>`
+                        );
+                    } else {
+                        // Para texto más largo, permitir división
+                        formattedName = formattedName.replace(
+                            match, 
+                            `<span class="special-text">${content}</span>`
+                        );
+                    }
+                });
+            }
+            
+            return formattedName;
+        }
+
+        // Función para obtener el nombre limpio (sin <> para iconos)
+        function getCleanMaterialName(materialName) {
+            // Remueve las tags <> pero mantiene el contenido interno
+            return materialName.replace(/<|>/g, '');
+        }
+
+        // Función para obtener el nombre seguro para imágenes (case insensitive)
         function getSafeImageName(materialName) {
+            // Primero limpiar el nombre de los <>
+            const cleanName = getCleanMaterialName(materialName);
+            
+            // Remover "Quest: " para los nombres de quests
+            const questCleanedName = cleanName.replace(/^Quest:\s*/i, '').trim();
+            
             // Mapeo manual para nombres problemáticos
             const nameMapping = {
+                // Rebirths 1-21
                 "Scroll EXP 20% (1 hour)": "Scroll EXP",
                 "Dyes STR +1 CON -1": "Dyes",
                 "Enchant Armor D": "Enchant Armor D",
                 "Enchant Armor A": "EAA",
                 "Enchant Weapon C": "Enchant Weapon C",
                 "Enchant Weapon S": "Enchant Weapon S",
-                "Sword of Nightmare +6": "Sword of Nightmare +6",
+                "Sword of Nightmare": "Sword of Nightmare +6",
                 "Tateossian Ring +4": "Tateossian Ring",
                 "Tateossian Necklace +4": "Tateossian Necklace",
                 "Tateossian Earring +5": "Tateossian Earring",
-                "Full Plate Shield +6": "Full Plate Shield +6",
+                "Full Plate Shield": "Full Plate Shield +6",
                 "Heaven Divider +4": "Heaven Divider",
                 "Basalt Battlehammer +4": "Basalt Battlehammer",
                 "Draconic Leather Armor +5": "Draconic Leather Armor",
@@ -885,21 +950,110 @@
                 "Red Seal Stone": "rss",
                 "Icarus Hall": "icarus hall",
                 "Scroll of Ancient Magic": "scroll magic",
-                // Agrega más mapeos según necesites
+                "Enchant Weapon A": "EAA",
+                "Dynasty Soul": "dyna soul",
+                "Moirai Ring +5": "Moirai Ring",
+                "Moirai Earring +5": "Moirai Earring",
+                "Moirai Necklace +5": "Moirai Necklace",
+                "Dark Crystal Helmet +4": "helm heavy",
+                "Tallum Helmet +4": "helm heavy",
+                "Helm of Nightmare +4": "leather helm",
+                "Imperial Crusader Helmet +4": "helm heavy",
+                "Draconic Leather Helmet +4": "leather helm",
+                "Major Arcana Circlet +4": "circlet",
+                "Dynasty Helmet +4": "helm heavy",
+                "Dynasty Circlet +4": "circlet",
+                "Dynasty Leather Helmet +4": "leather helm",
+                "Vesper Helmet +4": "helm heavy",
+                "Vesper Leather Helmet +4": "leather helm",
+                "Vesper Circlet +4": "circlet",
+                "Book Improvement C": "improvement",
+                "Book Improvement B": "improvement",
+                "Injector Formula": "Injector",
+                "Plated Leather Set": "moirai h",
+                "Karmian Set": "moirai h",
+                "Homunkulu's Sword - Acumen +7": "Homunkulu's Sword",
+                "Eminence Bow - Cheap Shot +7": "Eminence Bow",
+                "Abadon Robe Set": "moirai h",
+                "Blue Wolf Robe Set": "moirai h",
+                "Vesper Robe Set": "moirai h",
+                "Recipe - Eternal Gloves": "recipe r",
+                "Recipe - Eternal Turnic": "recipe r",
+                "Recipe - Eternal Gaiters": "recipe r",
+                "Armor Piece": "Armor Piece",
+                "Stone of Purity": "gemstone d",
+                "Star Crystal piece": "Star Crystal piece",
+                "Recipe Twilight Gauntlet": "recipe r",
+                "Recipe Twilight Leather Helmet": "recipe r",
+                "Recipe Twilight Circlet": "recipe r",
+                "Gray Fang Stakato": "Gray Fang Stakato",
+                "Vesper Earring +6": "Vesper Earring",
+                "Vesper Ring +6": "Vesper Ring",
+                "Vesper Necklace +6": "Vesper Necklace",
+                "Warsmith's Mold": "Blacksmiths Frame",
+                "Warsmith's Holder": "Blacksmiths Frame",
+                "Arcsmith's Anvil": "Blacksmiths Frame",
+                "Ether": "Ether",
+                "Enchant Armor S": "EAS",
+                "Crystal A": "Crystal A",
+                "Crystal S": "Crystal S",
+                "Elegia Ring +6": "Elegia Ring",
+                "Calculator": "Calculator",
+                "Vesper Breastplate": "Vesper Breastplate",
+                "Vesper Leather Leggings": "Vesper Leather Leggings",
+                "Vesper Glove": "Vesper Glove",
+                "Robe of Nightmare Set": "moirai h",
+                "Majestic Robe Set": "moirai h",
+                "Crystal: Accessory": "Crystal Accessory",
+                "Transformation Scroll: Ol Mahum - Event": "Transformation",
+                "Petra": "Torch",
+                "Processed steel": "Processed steel",
+                "Adamantine": "Adamantine",
+                "Blessed Enchant Weapon S": "BEWS",
+                "Draconic Bow - Earth +6": "Draconic Bow",
+                "Draconic Bow - Earth": "Draconic Bow",
+                "Draconic Bow": "Draconic Bow",
+                "Garden Flower": "Garden Flower",
+                "Talisman Magmeld Lv. 2": "Magmeld",
+                "Dark Crystal Glove - Heavy +5": "DC Glove heavy",
+                "Steel Wire": "Steel Wire",
+                "Cokes": "Cokes"
             };
                 
-                // Si existe en el mapeo, usa ese nombre
-                if (nameMapping[materialName]) {
-                    return nameMapping[materialName];
-                }
-                
-                // Si no, usa la sanitización original
-                return materialName.replace(/[\/\\?%*:|"<>]/g, '_').replace(/'/g, '');
+            // Si existe en el mapeo, usa ese nombre
+            if (nameMapping[questCleanedName]) {
+                return nameMapping[questCleanedName].toLowerCase();
             }
+            
+            // Si no, usa la sanitización original
+            const safeName = questCleanedName.replace(/[\/\\?%*:|"<>]/g, '_').replace(/'/g, '').toLowerCase();
+            return safeName;
+        }
 
         // Iconos para los materiales de rebirth (usando el mismo sistema que la calculadora)
         function getMaterialIconForRebirth(materialName) {
-            // Usar el nombre seguro para la imagen
+            // Para quests, usar siempre quest.png
+            if (materialName.toLowerCase().includes("quest:")) {
+                const iconPath = `icons/quest.png`;
+                
+                const iconDiv = document.createElement('div');
+                iconDiv.className = 'material-icon';
+                
+                const img = document.createElement('img');
+                img.src = iconPath;
+                img.alt = getCleanMaterialName(materialName);
+                img.onerror = function() {
+                    this.parentElement.innerHTML = `<i class="fas fa-scroll"></i>`;
+                };
+                
+                iconDiv.appendChild(img);
+                
+                const tempDiv = document.createElement('div');
+                tempDiv.appendChild(iconDiv.cloneNode(true));
+                return tempDiv.innerHTML;
+            }
+            
+            // Usar el nombre seguro para la imagen (case insensitive)
             const safeImageName = getSafeImageName(materialName);
             const iconPath = `icons/${safeImageName}.png`;
             
@@ -922,34 +1076,34 @@
                 "Manticore Skin Boot Lining": "fa-shoe-prints",
                 "Brigandine Helmet Design": "fa-helmet-battle",
                 "Mithril Gloves Design": "fa-hand",
-                "Full Plate Shield +6": "fa-shield-alt",
+                "Full Plate Shield": "fa-shield-alt",
                 "Bonebreaker head": "fa-skull",
                 "Heavy Bone Club Head": "fa-hammer",
                 "Earth Egg": "fa-egg",
                 "Nonliving Nucleus": "fa-atom",
                 "Angelic Essence": "fa-feather-alt",
-                "Sword of Nightmare +6": "fa-sword",
+                "Sword of Nightmare": "fa-sword",
                 "Crafted Leather": "fa-scroll",
-                "Tateossian Ring +4": "fa-ring",
-                "Tateossian Necklace +4": "fa-gem",
-                "Tateossian Earring +5": "fa-gem",
+                "Tateossian Ring": "fa-ring",
+                "Tateossian Necklace": "fa-gem",
+                "Tateossian Earring": "fa-gem",
                 "Mithril Alloy": "fa-cubes",
                 "Durable Metal Plate": "fa-layer-group",
                 "Broken Relic Part": "fa-history",
                 "Torch": "fa-fire",
                 "Mutagen": "fa-flask",
-                "Heaven Divider +4": "fa-scissors",
-                "Basalt Battlehammer +4": "fa-hammer",
+                "Heaven Divider": "fa-scissors",
+                "Basalt Battlehammer": "fa-hammer",
                 "Moonstone": "fa-moon",
-                "Draconic Leather Armor +5": "fa-vest",
-                "Major Arcana Robe +5": "fa-vest-patches",
+                "Draconic Leather Armor": "fa-vest",
+                "Major Arcana Robe": "fa-vest-patches",
                 "Mold Glue": "fa-glue",
                 "Mold Lubricant": "fa-oil-can",
                 "Mold Hardener": "fa-gem",
                 "Musical Score - Theme of the Feast": "fa-music",
-                "Sword Of Miracles +5": "fa-sword",
-                "Soul Separator +5": "fa-cut",
-                "Soul Bow +5": "fa-bow-arrow",
+                "Sword Of Miracles": "fa-sword",
+                "Soul Separator": "fa-cut",
+                "Soul Bow": "fa-bow-arrow",
                 "Recipe: Noble Elven Bow": "fa-scroll",
                 "Recipe: Elven Bow": "fa-scroll",
                 "Recipe: Spiritshot B": "fa-scroll",
@@ -963,13 +1117,13 @@
                 "Warsmith Mold": "fa-toolbox",
                 "Arcsmith Anvil": "fa-hammer",
                 "Warsmith Holder": "fa-grip",
-                "Dynasty Earrings +4": "fa-gem",
-                "Dynasty Ring +4": "fa-ring",
+                "Dynasty Earrings": "fa-gem",
+                "Dynasty Ring": "fa-ring",
                 "Ancient Tome Of the Demon": "fa-book",
                 "Holy Stone": "fa-gem",
                 "Fire Stone": "fa-fire",
-                "Icarus Sawsword +4": "fa-sword",
-                "Arcana Mace +4": "fa-hammer",
+                "Icarus Sawsword": "fa-sword",
+                "Arcana Mace": "fa-hammer",
                 "Giant Codex": "fa-book-open",
                 "Giant Codex - Mastery": "fa-book-open",
                 "Steel Bracelet": "fa-bracelet",
@@ -983,7 +1137,9 @@
                 "Dragon Heart": "fa-heart"
             };
             
-            const iconClass = defaultIcons[materialName] || "fa-cube";
+            // Obtener el nombre limpio para buscar en defaultIcons
+            const cleanName = getCleanMaterialName(materialName);
+            const iconClass = defaultIcons[cleanName] || "fa-cube";
             
             // Crear el elemento del icono
             const iconDiv = document.createElement('div');
@@ -991,10 +1147,19 @@
             
             const img = document.createElement('img');
             img.src = iconPath;
-            img.alt = materialName;
+            img.alt = cleanName;
             img.onerror = function() {
-                // Si la imagen falla, reemplaza con el icono de Font Awesome
-                this.parentElement.innerHTML = `<i class="fas ${iconClass}"></i>`;
+                // Si la imagen falla, intentar con diferentes casos
+                const lowerPath = `icons/${safeImageName.toLowerCase()}.png`;
+                if (lowerPath !== iconPath) {
+                    this.src = lowerPath;
+                    this.onerror = null; // Evitar recursión infinita
+                    this.onerror = function() {
+                        this.parentElement.innerHTML = `<i class="fas ${iconClass}"></i>`;
+                    };
+                } else {
+                    this.parentElement.innerHTML = `<i class="fas ${iconClass}"></i>`;
+                }
             };
             
             iconDiv.appendChild(img);
@@ -1020,16 +1185,22 @@
                         <div class="rebirth-material">
                             <span class="rebirth-material-name">
                                 ${getMaterialIconForRebirth(material.name)}
-                                ${material.name}
+                                <span class="rebirth-material-text">${formatMaterialName(material.name)}</span>
                             </span>
                             <span class="rebirth-material-count">${material.count.toLocaleString()}</span>
                         </div>
                     `;
                 });
                 
+                let notesHTML = '';
+                if (rebirth.notes && rebirth.notes.length > 0) {
+                    notesHTML += `<div class="rebirth-note"><strong>Nota:</strong> ${rebirth.notes.join('<br>')}</div>`;
+                }
+                
                 card.innerHTML = `
                     <div class="rebirth-title">${rebirth.title}</div>
                     ${materialsHTML}
+                    ${notesHTML}
                 `;
                 
                 container.appendChild(card);
@@ -1061,1292 +1232,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             initTabs();
             createRebirthCards();
-            
-            // Inicializar la calculadora de armaduras
-            document.getElementById("targetSelect").addEventListener("change", updateDisplay);
-            document.getElementById("currentArmorSelect").addEventListener("change", updateDisplay);
-            updateDisplay();
         });
-
-        // ============================================
-        // CÓDIGO DE LA CALCULADORA DE ARMADURAS
-        // ============================================
-        
-        // Datos de las armaduras extraídos del archivo txt actualizado
-        const armorData = {
-            // Grado D
-            "D-T1-L1": {
-                name: "Grado D - Tier 1 - Lv 1",
-                grade: "D",
-                tier: 1,
-                materials: {
-                    "Ancient Adena": 15000,
-                    "Leather": 180,
-                    "Cord": 105,
-                    "Crystal D": 240,
-                    "Gemstone D": 80,
-                    "Adena": 350000
-                }
-            },
-            "D-T1-L2": {
-                name: "Grado D - Tier 1 - Lv 2",
-                grade: "D",
-                tier: 1,
-                materials: {
-                    "Ancient Adena": 10000,
-                    "Leather": 180,
-                    "Cord": 105,
-                    "Crystal D": 240,
-                    "Gemstone D": 80,
-                    "Adena": 350000
-                }
-            },
-            "D-T1-L3": {
-                name: "Grado D - Tier 1 - Lv 3",
-                grade: "D",
-                tier: 1,
-                materials: {
-                    "Ancient Adena": 15000,
-                    "Leather": 180,
-                    "Cord": 105,
-                    "Crystal D": 240,
-                    "Gemstone D": 80,
-                    "Adena": 350000
-                }
-            },
-            "D-T2-L1": {
-                name: "Grado D - Tier 2 - Lv 1",
-                grade: "D",
-                tier: 2,
-                materials: {
-                    "Raid Boss Cloth": 1,
-                    "Ancient Adena": 20000,
-                    "Leather": 65,
-                    "Cord": 40,
-                    "Crystal D": 240,
-                    "Gemstone D": 80,
-                    "Adena": 350000
-                }
-            },
-            "D-T2-L2": {
-                name: "Grado D - Tier 2 - Lv 2",
-                grade: "D",
-                tier: 2,
-                materials: {
-                    "Raid Boss Cloth": 1,
-                    "Ancient Adena": 25000,
-                    "Leather": 65,
-                    "Cord": 40,
-                    "Crystal D": 240,
-                    "Gemstone D": 80,
-                    "Adena": 350000
-                }
-            },
-            "D-T2-L3": {
-                name: "Grado D - Tier 2 - Lv 3",
-                grade: "D",
-                tier: 2,
-                materials: {
-                    "Raid Boss Cloth": 1,
-                    "Ancient Adena": 30000,
-                    "Leather": 65,
-                    "Cord": 40,
-                    "Crystal D": 240,
-                    "Gemstone D": 80,
-                    "Adena": 350000
-                }
-            },
-            // Grado C
-            "C-T1-L1": {
-                name: "Grado C - Tier 1 - Lv 1",
-                grade: "C",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 1,
-                    "Mutagen": 7,
-                    "Ancient Adena": 100000,
-                    "Quality Leather": 180,
-                    "Synthetic Braid": 180,
-                    "Metallic Fiber": 90,
-                    "High-grade Suede": 24,
-                    "Blacksmith's Frame": 2,
-                    "Crystal C": 150,
-                    "Gemstone C": 50,
-                    "Adena": 3200000
-                }
-            },
-            "C-T1-L2": {
-                name: "Grado C - Tier 1 - Lv 2",
-                grade: "C",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 1,
-                    "Mutagen": 7,
-                    "Ancient Adena": 150000,
-                    "Quality Leather": 180,
-                    "Synthetic Braid": 180,
-                    "Metallic Fiber": 90,
-                    "High-grade Suede": 24,
-                    "Blacksmith's Frame": 2,
-                    "Crystal C": 150,
-                    "Gemstone C": 50,
-                    "Adena": 3200000
-                }
-            },
-            "C-T1-L3": {
-                name: "Grado C - Tier 1 - Lv 3",
-                grade: "C",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 1,
-                    "Mutagen": 7,
-                    "Ancient Adena": 200000,
-                    "Quality Leather": 180,
-                    "Synthetic Braid": 180,
-                    "Metallic Fiber": 90,
-                    "High-grade Suede": 24,
-                    "Blacksmith's Frame": 2,
-                    "Crystal C": 150,
-                    "Gemstone C": 50,
-                    "Adena": 3200000
-                }
-            },
-            "C-T2-L1": {
-                name: "Grado C - Tier 2 - Lv 1",
-                grade: "C",
-                tier: 2,
-                materials: {
-                    "Raid Boss Cloth": 2,
-                    "Mutagen": 7,
-                    "Ancient Adena": 250000,
-                    "Quality Leather": 180,
-                    "Synthetic Braid": 180,
-                    "Metallic Fiber": 90,
-                    "High-grade Suede": 25,
-                    "Blacksmith's Frame": 3,
-                    "Crystal C": 250,
-                    "Gemstone C": 100,
-                    "Adena": 3200000
-                }
-            },
-            "C-T2-L2": {
-                name: "Grado C - Tier 2 - Lv 2",
-                grade: "C",
-                tier: 2,
-                materials: {
-                    "Raid Boss Cloth": 2,
-                    "Mutagen": 7,
-                    "Ancient Adena": 300000,
-                    "Quality Leather": 180,
-                    "Synthetic Braid": 180,
-                    "Metallic Fiber": 90,
-                    "High-grade Suede": 25,
-                    "Blacksmith's Frame": 3,
-                    "Crystal C": 250,
-                    "Gemstone C": 100,
-                    "Adena": 3200000
-                }
-            },
-            "C-T2-L3": {
-                name: "Grado C - Tier 2 - Lv 3",
-                grade: "C",
-                tier: 2,
-                materials: {
-                    "Raid Boss Cloth": 2,
-                    "Mutagen": 7,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 180,
-                    "Synthetic Braid": 180,
-                    "Metallic Fiber": 90,
-                    "High-grade Suede": 25,
-                    "Blacksmith's Frame": 3,
-                    "Crystal C": 250,
-                    "Gemstone C": 100,
-                    "Adena": 4000000
-                }
-            },
-            "C-T3-L1": {
-                name: "Grado C - Tier 3 - Lv 1",
-                grade: "C",
-                tier: 3,
-                materials: {
-                    "Raid Boss Cloth": 2,
-                    "Mutagen": 7,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 180,
-                    "Synthetic Braid": 180,
-                    "Metallic Fiber": 55,
-                    "High-grade Suede": 25,
-                    "Blacksmith's Frame": 4,
-                    "Crystal C": 350,
-                    "Gemstone C": 150,
-                    "Adena": 4000000
-                }
-            },
-            "C-T3-L2": {
-                name: "Grado C - Tier 3 - Lv 2",
-                grade: "C",
-                tier: 3,
-                materials: {
-                    "Raid Boss Cloth": 2,
-                    "Mutagen": 7,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 180,
-                    "Synthetic Braid": 180,
-                    "Metallic Fiber": 55,
-                    "High-grade Suede": 25,
-                    "Blacksmith's Frame": 4,
-                    "Crystal C": 350,
-                    "Gemstone C": 150,
-                    "Adena": 4000000
-                }
-            },
-            "C-T3-L3": {
-                name: "Grado C - Tier 3 - Lv 3",
-                grade: "C",
-                tier: 3,
-                materials: {
-                    "Raid Boss Cloth": 2,
-                    "Mutagen": 7,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 180,
-                    "Synthetic Braid": 180,
-                    "Metallic Fiber": 55,
-                    "High-grade Suede": 25,
-                    "Blacksmith's Frame": 4,
-                    "Crystal C": 350,
-                    "Gemstone C": 150,
-                    "Adena": 4000000
-                }
-            },
-            // Grado B
-            "B-Zubei-L1": {
-                name: "Grado B - Zubei - Lv 1",
-                grade: "B",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 3,
-                    "Mutagen": 14,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 250,
-                    "Synthetic Braid": 250,
-                    "Metallic Fiber": 180,
-                    "Asofe": 180,
-                    "Blacksmith's Frame": 4,
-                    "Gemstone B": 45,
-                    "Crystal B": 85,
-                    "Adena": 8000000
-                }
-            },
-            "B-Zubei-L2": {
-                name: "Grado B - Zubei - Lv 2",
-                grade: "B",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 3,
-                    "Mutagen": 14,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 250,
-                    "Synthetic Braid": 250,
-                    "Metallic Fiber": 180,
-                    "Asofe": 180,
-                    "Blacksmith's Frame": 4,
-                    "Gemstone B": 45,
-                    "Crystal B": 85,
-                    "Adena": 8000000
-                }
-            },
-            "B-Zubei-L3": {
-                name: "Grado B - Zubei - Lv 3",
-                grade: "B",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 3,
-                    "Mutagen": 14,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 250,
-                    "Synthetic Braid": 250,
-                    "Metallic Fiber": 180,
-                    "Asofe": 180,
-                    "Blacksmith's Frame": 4,
-                    "Gemstone B": 45,
-                    "Crystal B": 85,
-                    "Adena": 8000000
-                }
-            },
-            "B-Avadon-L1": {
-                name: "Grado B - Avadon - Lv 1",
-                grade: "B",
-                tier: 2,
-                materials: {
-                    "Raid Boss Cloth": 3,
-                    "Mutagen": 14,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 250,
-                    "Synthetic Braid": 250,
-                    "Metallic Fiber": 180,
-                    "Asofe": 180,
-                    "Blacksmith's Frame": 5,
-                    "Gemstone B": 45,
-                    "Crystal B": 85,
-                    "Adena": 8500000
-                }
-            },
-            "B-Avadon-L2": {
-                name: "Grado B - Avadon - Lv 2",
-                grade: "B",
-                tier: 2,
-                materials: {
-                    "Raid Boss Cloth": 3,
-                    "Mutagen": 14,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 250,
-                    "Synthetic Braid": 250,
-                    "Metallic Fiber": 180,
-                    "Asofe": 180,
-                    "Blacksmith's Frame": 5,
-                    "Gemstone B": 45,
-                    "Crystal B": 85,
-                    "Adena": 8500000
-                }
-            },
-            "B-Avadon-L3": {
-                name: "Grado B - Avadon - Lv 3",
-                grade: "B",
-                tier: 2,
-                materials: {
-                    "Raid Boss Cloth": 3,
-                    "Mutagen": 14,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 250,
-                    "Synthetic Braid": 250,
-                    "Metallic Fiber": 180,
-                    "Asofe": 180,
-                    "Blacksmith's Frame": 5,
-                    "Gemstone B": 45,
-                    "Crystal B": 85,
-                    "Adena": 8500000
-                }
-            },
-            "B-BlueWolf-L1": {
-                name: "Grado B - Blue Wolf - Lv 1",
-                grade: "B",
-                tier: 3,
-                materials: {
-                    "Raid Boss Cloth": 3,
-                    "Mutagen": 14,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 250,
-                    "Synthetic Braid": 250,
-                    "Metallic Fiber": 180,
-                    "Asofe": 180,
-                    "Blacksmith's Frame": 6,
-                    "Gemstone B": 45,
-                    "Crystal B": 85,
-                    "Adena": 9000000
-                }
-            },
-            "B-BlueWolf-L2": {
-                name: "Grado B - Blue Wolf - Lv 2",
-                grade: "B",
-                tier: 3,
-                materials: {
-                    "Raid Boss Cloth": 3,
-                    "Mutagen": 14,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 250,
-                    "Synthetic Braid": 250,
-                    "Metallic Fiber": 180,
-                    "Asofe": 180,
-                    "Blacksmith's Frame": 6,
-                    "Gemstone B": 45,
-                    "Crystal B": 85,
-                    "Adena": 9000000
-                }
-            },
-            "B-BlueWolf-L3": {
-                name: "Grado B - Blue Wolf - Lv 3",
-                grade: "B",
-                tier: 3,
-                materials: {
-                    "Raid Boss Cloth": 3,
-                    "Mutagen": 14,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 250,
-                    "Synthetic Braid": 250,
-                    "Metallic Fiber": 180,
-                    "Asofe": 180,
-                    "Blacksmith's Frame": 6,
-                    "Gemstone B": 45,
-                    "Crystal B": 85,
-                    "Adena": 9000000
-                }
-            },
-            "B-Doom-L1": {
-                name: "Grado B - Doom - Lv 1",
-                grade: "B",
-                tier: 4,
-                materials: {
-                    "Raid Boss Cloth": 3,
-                    "Mutagen": 14,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 250,
-                    "Synthetic Braid": 250,
-                    "Metallic Fiber": 180,
-                    "Asofe": 180,
-                    "Blacksmith's Frame": 7,
-                    "Gemstone B": 45,
-                    "Crystal B": 85,
-                    "Adena": 10500000
-                }
-            },
-            "B-Doom-L2": {
-                name: "Grado B - Doom - Lv 2",
-                grade: "B",
-                tier: 4,
-                materials: {
-                    "Raid Boss Cloth": 3,
-                    "Mutagen": 14,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 250,
-                    "Synthetic Braid": 250,
-                    "Metallic Fiber": 180,
-                    "Asofe": 180,
-                    "Blacksmith's Frame": 7,
-                    "Gemstone B": 45,
-                    "Crystal B": 85,
-                    "Adena": 10500000
-                }
-            },
-            "B-Doom-L3": {
-                name: "Grado B - Doom - Lv 3",
-                grade: "B",
-                tier: 4,
-                materials: {
-                    "Raid Boss Cloth": 3,
-                    "Mutagen": 14,
-                    "Ancient Adena": 350000,
-                    "Quality Leather": 250,
-                    "Synthetic Braid": 250,
-                    "Metallic Fiber": 180,
-                    "Asofe": 180,
-                    "Blacksmith's Frame": 7,
-                    "Gemstone B": 45,
-                    "Crystal B": 85,
-                    "Adena": 10500000
-                }
-            },
-            // Grado A
-            "A-DarkCrystal-L1": {
-                name: "Grado A - Dark Crystal - Lv 1",
-                grade: "A",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 4,
-                    "Mutagen": 14,
-                    "Ancient Adena": 400000,
-                    "Quality Leather": 250,
-                    "Synthetic Braid": 250,
-                    "Metallic Fiber": 180,
-                    "Asofe": 180,
-                    "Blacksmith's Frame": 7,
-                    "Gemstone B": 45,
-                    "Crystal B": 95,
-                    "Adena": 16000000
-                }
-            },
-            "A-DarkCrystal-L2": {
-                name: "Grado A - Dark Crystal - Lv 2",
-                grade: "A",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 5,
-                    "Mutagen": 70,
-                    "Ancient Adena": 450000,
-                    "Maestro Mold": 3,
-                    "Maestro Anvil Lock": 2,
-                    "Quality Leather": 450,
-                    "Metallic Fiber": 120,
-                    "Synthetic Braid": 80,
-                    "Asofe": 200,
-                    "High-grade Suede": 24,
-                    "Gemstone A": 35,
-                    "Crystal A": 110,
-                    "Adena": 15000000
-                }
-            },
-            "A-DarkCrystal-L3": {
-                name: "Grado A - Dark Crystal - Lv 3",
-                grade: "A",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 5,
-                    "Mutagen": 70,
-                    "Ancient Adena": 450000,
-                    "Maestro Mold": 3,
-                    "Maestro Anvil Lock": 2,
-                    "Quality Leather": 450,
-                    "Metallic Fiber": 120,
-                    "Synthetic Braid": 80,
-                    "Asofe": 200,
-                    "High-grade Suede": 24,
-                    "Gemstone A": 35,
-                    "Crystal A": 110,
-                    "Adena": 15000000
-                }
-            },
-            "A-Tallum-L1": {
-                name: "Grado A - Tallum - Lv 1",
-                grade: "A",
-                tier: 2,
-                materials: {
-                    "Raid Boss Cloth": 5,
-                    "Mutagen": 70,
-                    "Ancient Adena": 450000,
-                    "Maestro Mold": 6,
-                    "Maestro Anvil Lock": 4,
-                    "Quality Leather": 350,
-                    "Metallic Fiber": 100,
-                    "Synthetic Braid": 80,
-                    "Asofe": 208,
-                    "High-grade Suede": 60,
-                    "Gemstone A": 45,
-                    "Crystal A": 125,
-                    "Adena": 20000000
-                }
-            },
-            "A-Tallum-L2": {
-                name: "Grado A - Tallum - Lv 2",
-                grade: "A",
-                tier: 2,
-                materials: {
-                    "Raid Boss Cloth": 5,
-                    "Mutagen": 70,
-                    "Ancient Adena": 450000,
-                    "Maestro Mold": 6,
-                    "Maestro Anvil Lock": 4,
-                    "Quality Leather": 350,
-                    "Metallic Fiber": 100,
-                    "Synthetic Braid": 80,
-                    "Asofe": 208,
-                    "High-grade Suede": 60,
-                    "Gemstone A": 45,
-                    "Crystal A": 125,
-                    "Adena": 20000000
-                }
-            },
-            "A-Tallum-L3": {
-                name: "Grado A - Tallum - Lv 3",
-                grade: "A",
-                tier: 2,
-                materials: {
-                    "Raid Boss Cloth": 5,
-                    "Mutagen": 70,
-                    "Ancient Adena": 450000,
-                    "Maestro Mold": 6,
-                    "Maestro Anvil Lock": 4,
-                    "Quality Leather": 350,
-                    "Metallic Fiber": 100,
-                    "Synthetic Braid": 80,
-                    "Asofe": 208,
-                    "High-grade Suede": 60,
-                    "Gemstone A": 45,
-                    "Crystal A": 125,
-                    "Adena": 20000000
-                }
-            },
-            "A-Nightmare-L1": {
-                name: "Grado A - Nightmare - Lv 1",
-                grade: "A",
-                tier: 3,
-                materials: {
-                    "Raid Boss Cloth": 5,
-                    "Mutagen": 70,
-                    "Ancient Adena": 450000,
-                    "Maestro Mold": 9,
-                    "Maestro Anvil Lock": 6,
-                    "Quality Leather": 190,
-                    "Metallic Fiber": 56,
-                    "Synthetic Braid": 48,
-                    "Asofe": 120,
-                    "High-grade Suede": 36,
-                    "Gemstone A": 60,
-                    "Crystal A": 140,
-                    "Adena": 12500000
-                }
-            },
-            "A-Nightmare-L2": {
-                name: "Grado A - Nightmare - Lv 2",
-                grade: "A",
-                tier: 3,
-                materials: {
-                    "Raid Boss Cloth": 5,
-                    "Mutagen": 70,
-                    "Ancient Adena": 450000,
-                    "Maestro Mold": 9,
-                    "Maestro Anvil Lock": 6,
-                    "Quality Leather": 190,
-                    "Metallic Fiber": 56,
-                    "Synthetic Braid": 48,
-                    "Asofe": 120,
-                    "High-grade Suede": 36,
-                    "Gemstone A": 60,
-                    "Crystal A": 140,
-                    "Adena": 12500000
-                }
-            },
-            "A-Nightmare-L3": {
-                name: "Grado A - Nightmare - Lv 3",
-                grade: "A",
-                tier: 3,
-                materials: {
-                    "Raid Boss Cloth": 5,
-                    "Mutagen": 70,
-                    "Ancient Adena": 450000,
-                    "Maestro Mold": 9,
-                    "Maestro Anvil Lock": 6,
-                    "Quality Leather": 190,
-                    "Metallic Fiber": 56,
-                    "Synthetic Braid": 48,
-                    "Asofe": 120,
-                    "High-grade Suede": 36,
-                    "Gemstone A": 60,
-                    "Crystal A": 140,
-                    "Adena": 12500000
-                }
-            },
-            "A-Majestic-L1": {
-                name: "Grado A - Majestic - Lv 1",
-                grade: "A",
-                tier: 4,
-                materials: {
-                    "Raid Boss Cloth": 5,
-                    "Mutagen": 70,
-                    "Ancient Adena": 450000,
-                    "Maestro Mold": 12,
-                    "Maestro Anvil Lock": 8,
-                    "Quality Leather": 185,
-                    "Metallic Fiber": 62,
-                    "Synthetic Braid": 54,
-                    "Asofe": 135,
-                    "High-grade Suede": 42,
-                    "Gemstone A": 77,
-                    "Crystal A": 155,
-                    "Adena": 15000000
-                }
-            },
-            "A-Majestic-L2": {
-                name: "Grado A - Majestic - Lv 2",
-                grade: "A",
-                tier: 4,
-                materials: {
-                    "Raid Boss Cloth": 5,
-                    "Mutagen": 70,
-                    "Ancient Adena": 450000,
-                    "Maestro Mold": 12,
-                    "Maestro Anvil Lock": 8,
-                    "Quality Leather": 185,
-                    "Metallic Fiber": 62,
-                    "Synthetic Braid": 54,
-                    "Asofe": 135,
-                    "High-grade Suede": 42,
-                    "Gemstone A": 77,
-                    "Crystal A": 155,
-                    "Adena": 15000000
-                }
-            },
-            "A-Majestic-L3": {
-                name: "Grado A - Majestic - Lv 3",
-                grade: "A",
-                tier: 4,
-                materials: {
-                    "Raid Boss Cloth": 5,
-                    "Mutagen": 70,
-                    "Ancient Adena": 450000,
-                    "Maestro Mold": 12,
-                    "Maestro Anvil Lock": 8,
-                    "Quality Leather": 185,
-                    "Metallic Fiber": 62,
-                    "Synthetic Braid": 54,
-                    "Asofe": 135,
-                    "High-grade Suede": 42,
-                    "Gemstone A": 77,
-                    "Crystal A": 155,
-                    "Adena": 15000000
-                }
-            },
-            // Grado S
-            "S-L1": {
-                name: "Grado S - Lv 1",
-                grade: "S",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 10,
-                    "Mutagen": 70,
-                    "Ancient Adena": 1000000,
-                    "Corroed Arcsmith Anvil": 5,
-                    "Corroded Reorin Mold": 13,
-                    "Corroded Warsmith Mold": 26,
-                    "Metallic Fiber": 690,
-                    "Quality Leather": 690,
-                    "Synthetic Braid": 460,
-                    "Asofe": 1140,
-                    "Gemstone S": 26,
-                    "Crystal S": 150,
-                    "Adena": 190000000
-                }
-            },
-            "S-L2": {
-                name: "Grado S - Lv 2",
-                grade: "S",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 10,
-                    "Mutagen": 70,
-                    "Ancient Adena": 1000000,
-                    "Corroed Arcsmith Anvil": 5,
-                    "Corroded Reorin Mold": 13,
-                    "Corroded Warsmith Mold": 26,
-                    "Metallic Fiber": 690,
-                    "Quality Leather": 690,
-                    "Synthetic Braid": 460,
-                    "Asofe": 1140,
-                    "Gemstone S": 26,
-                    "Crystal S": 150,
-                    "Adena": 190000000
-                }
-            },
-            "S-L3": {
-                name: "Grado S - Lv 3",
-                grade: "S",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 10,
-                    "Mutagen": 70,
-                    "Ancient Adena": 1000000,
-                    "Corroed Arcsmith Anvil": 5,
-                    "Corroded Reorin Mold": 13,
-                    "Corroded Warsmith Mold": 26,
-                    "Metallic Fiber": 690,
-                    "Quality Leather": 690,
-                    "Synthetic Braid": 460,
-                    "Asofe": 1140,
-                    "Gemstone S": 26,
-                    "Crystal S": 150,
-                    "Adena": 190000000
-                }
-            },
-            // Grado Dynasty
-            "Dynasty-L1": {
-                name: "Grado Dynasty - Lv 1",
-                grade: "Dynasty",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 10,
-                    "Mutagen": 78,
-                    "Ancient Adena": 1000000,
-                    "Corroded Reorin Mold": 28,
-                    "Corroded Warsmith Mold": 26,
-                    "Metallic Fiber": 890,
-                    "Quality Leather": 3690,
-                    "Orichalcum": 544,
-                    "Asofe": 1490,
-                    "High-grade Suede": 340,
-                    "Gemstone S": 29,
-                    "Crystal S": 146,
-                    "Adena": 480000000
-                }
-            },
-            "Dynasty-L2": {
-                name: "Grado Dynasty - Lv 2",
-                grade: "Dynasty",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 10,
-                    "Mutagen": 78,
-                    "Ancient Adena": 1200000,
-                    "Corroded Reorin Mold": 39,
-                    "Corroded Warsmith Mold": 26,
-                    "Metallic Fiber": 1200,
-                    "Quality Leather": 5380,
-                    "Orichalcum": 799,
-                    "Asofe": 1638,
-                    "High-grade Suede": 680,
-                    "Gemstone S": 33,
-                    "Crystal S": 145,
-                    "Adena": 500000000
-                }
-            },
-            "Dynasty-L3": {
-                name: "Grado Dynasty - Lv 3",
-                grade: "Dynasty",
-                tier: 1,
-                materials: {
-                    "Raid Boss Cloth": 10,
-                    "Mutagen": 78,
-                    "Ancient Adena": 1200000,
-                    "Corroded Reorin Mold": 39,
-                    "Corroded Warsmith Mold": 26,
-                    "Metallic Fiber": 1200,
-                    "Quality Leather": 5380,
-                    "Orichalcum": 799,
-                    "Asofe": 1638,
-                    "High-grade Suede": 680,
-                    "Gemstone S": 33,
-                    "Crystal S": 145,
-                    "Adena": 500000000
-                }
-            },
-            // Datos de las piezas individuales de Moirai para usar en el cálculo
-            "Moirai-Helmet": {
-                name: "Moirai Helmet",
-                grade: "Moirai",
-                tier: 1,
-                materials: {
-                    "Recipe Moirai Helmet": 3,
-                    "Raid Boss Cloth": 6,
-                    "Mutagen": 45,
-                    "Ancient Adena": 900000,
-                    "Corroded Reorin Mold": 18,
-                    "Quality Leather": 2080,
-                    "Orichalcum": 200,
-                    "Asofe": 308,
-                    "Gemstone S": 27,
-                    "Crystal S": 362,
-                    "Adena": 300000000
-                }
-            },
-            "Moirai-Armor": {
-                name: "Moirai Armor",
-                grade: "Moirai",
-                tier: 2,
-                materials: {
-                    "Recipe Moirai Armor": 3,
-                    "Raid Boss Cloth": 6,
-                    "Mutagen": 45,
-                    "Ancient Adena": 900000,
-                    "Corroded Reorin Mold": 18,
-                    "Metallic Fiber": 2000,
-                    "Quality Leather": 3000,
-                    "Orichalcum": 400,
-                    "Asofe": 700,
-                    "Gemstone S": 57,
-                    "Crystal S": 930,
-                    "Adena": 300000000
-                }
-            },
-            "Moirai-Pants": {
-                name: "Moirai Pants",
-                grade: "Moirai",
-                tier: 3,
-                materials: {
-                    "Recipe Moirai Pants": 3,
-                    "Raid Boss Cloth": 6,
-                    "Mutagen": 45,
-                    "Ancient Adena": 900000,
-                    "Corroded Reorin Mold": 18,
-                    "Metallic Fiber": 2000,
-                    "Quality Leather": 3000,
-                    "Orichalcum": 400,
-                    "Asofe": 700,
-                    "Gemstone S": 57,
-                    "Crystal S": 930,
-                    "Adena": 300000000
-                }
-            },
-            "Moirai-Glove": {
-                name: "Moirai Glove",
-                grade: "Moirai",
-                tier: 4,
-                materials: {
-                    "Recipe Moirai Glove": 3,
-                    "Raid Boss Cloth": 6,
-                    "Mutagen": 45,
-                    "Ancient Adena": 900000,
-                    "Corroded Warsmith Mold": 18,
-                    "Quality Leather": 1420,
-                    "High-grade Suede": 552,
-                    "Orichalcum": 150,
-                    "Asofe": 200,
-                    "Gemstone S": 18,
-                    "Crystal S": 311,
-                    "Adena": 300000000
-                }
-            },
-            "Moirai-Shoes": {
-                name: "Moirai Shoes",
-                grade: "Moirai",
-                tier: 5,
-                materials: {
-                    "Recipe Moirai Shoes": 3,
-                    "Raid Boss Cloth": 6,
-                    "Mutagen": 45,
-                    "Ancient Adena": 900000,
-                    "Corroded Warsmith Mold": 18,
-                    "Quality Leather": 1420,
-                    "High-grade Suede": 552,
-                    "Orichalcum": 150,
-                    "Asofe": 200,
-                    "Gemstone S": 18,
-                    "Crystal S": 311,
-                    "Adena": 300000000
-                }
-            },
-            // Set Moirai completo (combinación de las 5 piezas)
-            "moirai-full": {
-                name: "Set Moirai Completo",
-                grade: "Moirai",
-                tier: 1,
-                materials: {
-                    "Recipe Moirai Helmet": 3,
-                    "Recipe Moirai Armor": 3,
-                    "Recipe Moirai Pants": 3,
-                    "Recipe Moirai Glove": 3,
-                    "Recipe Moirai Shoes": 3,
-                    "Raid Boss Cloth": 30,
-                    "Mutagen": 225,
-                    "Ancient Adena": 4500000,
-                    "Corroded Reorin Mold": 54,
-                    "Corroded Warsmith Mold": 36,
-                    "Quality Leather": 2080 + 3000 + 3000 + 1420 + 1420,
-                    "Metallic Fiber": 4000,
-                    "Orichalcum": 200 + 400 + 400 + 150 + 150,
-                    "Asofe": 308 + 700 + 700 + 200 + 200,
-                    "High-grade Suede": 1104,
-                    "Gemstone S": 27 + 57 + 57 + 18 + 18,
-                    "Crystal S": 362 + 930 + 930 + 311 + 311,
-                    "Adena": 1500000000
-                }
-            }
-        };
-
-        // Orden de progresión de armaduras
-        const armorProgression = [
-            // Grado D
-            "D-T1-L1", "D-T1-L2", "D-T1-L3",
-            "D-T2-L1", "D-T2-L2", "D-T2-L3",
-            // Grado C
-            "C-T1-L1", "C-T1-L2", "C-T1-L3",
-            "C-T2-L1", "C-T2-L2", "C-T2-L3",
-            "C-T3-L1", "C-T3-L2", "C-T3-L3",
-            // Grado B
-            "B-Zubei-L1", "B-Zubei-L2", "B-Zubei-L3",
-            "B-Avadon-L1", "B-Avadon-L2", "B-Avadon-L3",
-            "B-BlueWolf-L1", "B-BlueWolf-L2", "B-BlueWolf-L3",
-            "B-Doom-L1", "B-Doom-L2", "B-Doom-L3",
-            // Grado A
-            "A-DarkCrystal-L1", "A-DarkCrystal-L2", "A-DarkCrystal-L3",
-            "A-Tallum-L1", "A-Tallum-L2", "A-Tallum-L3",
-            "A-Nightmare-L1", "A-Nightmare-L2", "A-Nightmare-L3",
-            "A-Majestic-L1", "A-Majestic-L2", "A-Majestic-L3",
-            // Grado S
-            "S-L1", "S-L2", "S-L3",
-            // Grado Dynasty
-            "Dynasty-L1", "Dynasty-L2", "Dynasty-L3",
-            // Grado Moirai (las 5 piezas juntas como un set completo)
-            "moirai-full"
-        ];
-
-        // Iconos por defecto para materiales (Font Awesome) - ACTUALIZADO para incluir Recipes
-        const materialIcons = {
-            "Adena": "fa-coins",
-            "Ancient Adena": "fa-gem",
-            "Leather": "fa-scroll",
-            "Cord": "fa-rope",
-            "Crystal D": "fa-gem",
-            "Gemstone D": "fa-gem",
-            "Crystal C": "fa-gem",
-            "Gemstone C": "fa-gem",
-            "Crystal B": "fa-gem",
-            "Gemstone B": "fa-gem",
-            "Crystal A": "fa-gem",
-            "Gemstone A": "fa-gem",
-            "Crystal S": "fa-gem",
-            "Gemstone S": "fa-gem",
-            "Raid Boss Cloth": "fa-scroll",
-            "Mutagen": "fa-flask",
-            "Quality Leather": "fa-scroll",
-            "Synthetic Braid": "fa-braille",
-            "Metallic Fiber": "fa-link",
-            "High-grade Suede": "fa-feather",
-            "Blacksmith's Frame": "fa-tools",
-            "Asofe": "fa-shield",
-            "Maestro Mold": "fa-toolbox",
-            "Maestro Anvil Lock": "fa-lock",
-            "Corroed Arcsmith Anvil": "fa-hammer",
-            "Corroded Reorin Mold": "fa-toolbox",
-            "Corroded Warsmith Mold": "fa-toolbox",
-            "Orichalcum": "fa-mountain",
-            "Recipe Moirai Helmet": "fa-scroll",
-            "Recipe Moirai Armor": "fa-scroll", 
-            "Recipe Moirai Pants": "fa-scroll",
-            "Recipe Moirai Glove": "fa-scroll",
-            "Recipe Moirai Shoes": "fa-scroll"
-        };
-
-        // Función para obtener el icono de un material - MEJORADA para Recipes
-        function getMaterialIcon(materialName) {
-            // Para los Recipes Moirai, usar siempre recipe.png
-            if (materialName.includes("Recipe Moirai")) {
-                const iconPath = `icons/recipe.png`;
-                
-                const iconDiv = document.createElement('div');
-                iconDiv.className = 'material-icon';
-                
-                const img = document.createElement('img');
-                img.src = iconPath;
-                img.alt = materialName;
-                img.onerror = function() {
-                    this.parentElement.innerHTML = `<i class="fas fa-scroll"></i>`;
-                };
-                
-                iconDiv.appendChild(img);
-                
-                const tempDiv = document.createElement('div');
-                tempDiv.appendChild(iconDiv.cloneNode(true));
-                return tempDiv.innerHTML;
-            }
-            
-            // Para otros materiales, seguir el proceso normal
-            const safeMaterialName = materialName.replace(/[\/\\?%*:|"<>]/g, '_').replace(/'/g, '');
-            const iconPath = `icons/${safeMaterialName}.png`;
-            
-            const iconClass = materialIcons[materialName] || "fa-cube";
-            
-            const iconDiv = document.createElement('div');
-            iconDiv.className = 'material-icon';
-            
-            const img = document.createElement('img');
-            img.src = iconPath;
-            img.alt = materialName;
-            img.onerror = function() {
-                this.parentElement.innerHTML = `<i class="fas ${iconClass}"></i>`;
-            };
-            
-            iconDiv.appendChild(img);
-            
-            const tempDiv = document.createElement('div');
-            tempDiv.appendChild(iconDiv.cloneNode(true));
-            return tempDiv.innerHTML;
-        }
-
-        // Función para obtener los materiales necesarios según objetivo y armadura actual
-        function calculateMaterials(target, currentArmor) {
-            const totalMaterials = {};
-            const gradeTotals = {};
-            const gradeArmorCount = {};
-            
-            // Encontrar el índice de la armadura actual en la progresión
-            let startIndex = 0;
-            if (currentArmor !== "none") {
-                startIndex = armorProgression.indexOf(currentArmor) + 1;
-                if (startIndex === 0) startIndex = 0;
-            }
-            
-            // Determinar el índice final según el objetivo
-            let endIndex = armorProgression.length;
-            if (target === "grade-d") {
-                endIndex = 6;
-            } else if (target === "grade-c") {
-                endIndex = 15;
-            } else if (target === "grade-b") {
-                endIndex = 27;
-            } else if (target === "grade-a") {
-                endIndex = 39;
-            } else if (target === "grade-s") {
-                endIndex = 42;
-            } else if (target === "grade-dynasty") {
-                endIndex = 45;
-            } else if (target === "grade-moirai") {
-                endIndex = 46;
-            }
-            
-            // Sumar materiales de todas las armaduras en el rango
-            for (let i = startIndex; i < endIndex; i++) {
-                const armorKey = armorProgression[i];
-                const armor = armorData[armorKey];
-                const grade = armor.grade;
-                
-                // Contar armaduras por grado
-                if (armorKey === "moirai-full") {
-                    gradeArmorCount[grade] = (gradeArmorCount[grade] || 0) + 1;
-                } else {
-                    gradeArmorCount[grade] = (gradeArmorCount[grade] || 0) + 1;
-                }
-                
-                // Inicializar el total por grado si no existe
-                if (!gradeTotals[grade]) {
-                    gradeTotals[grade] = {};
-                }
-                
-                // Sumar materiales
-                for (const [material, quantity] of Object.entries(armor.materials)) {
-                    totalMaterials[material] = (totalMaterials[material] || 0) + quantity;
-                    gradeTotals[grade][material] = (gradeTotals[grade][material] || 0) + quantity;
-                }
-            }
-            
-            return { totalMaterials, gradeTotals, gradeArmorCount, startIndex, endIndex };
-        }
-
-        // Función para crear una tabla de materiales
-        function createMaterialTable(materials, title, gradeClass) {
-            const sortedMaterials = Object.entries(materials).sort((a, b) => a[0].localeCompare(b[0]));
-            
-            let adenaTotal = 0;
-            let ancientAdenaTotal = 0;
-            let otherMaterials = [];
-            
-            for (const [material, quantity] of sortedMaterials) {
-                if (material === "Adena") {
-                    adenaTotal = quantity;
-                } else if (material === "Ancient Adena") {
-                    ancientAdenaTotal = quantity;
-                } else {
-                    otherMaterials.push([material, quantity]);
-                }
-            }
-            
-            let html = `
-                <div class="table-container">
-                    <h3 class="${gradeClass}">${title}</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Material</th>
-                                <th>Cantidad Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-            `;
-            
-            if (adenaTotal > 0) {
-                html += `
-                    <tr>
-                        <td>
-                            <div class="material-cell">
-                                ${getMaterialIcon("Adena")}
-                                <span class="material-name">Adena</span>
-                            </div>
-                        </td>
-                        <td class="material-count">${adenaTotal.toLocaleString()}</td>
-                    </tr>
-                `;
-            }
-            
-            if (ancientAdenaTotal > 0) {
-                html += `
-                    <tr>
-                        <td>
-                            <div class="material-cell">
-                                ${getMaterialIcon("Ancient Adena")}
-                                <span class="material-name">Ancient Adena</span>
-                            </div>
-                        </td>
-                        <td class="material-count">${ancientAdenaTotal.toLocaleString()}</td>
-                    </tr>
-                `;
-            }
-            
-            for (const [material, quantity] of otherMaterials) {
-                html += `
-                    <tr>
-                        <td>
-                            <div class="material-cell">
-                                ${getMaterialIcon(material)}
-                                <span class="material-name">${material}</span>
-                            </div>
-                        </td>
-                        <td class="material-count">${quantity.toLocaleString()}</td>
-                    </tr>
-                `;
-            }
-            
-            const totalItems = Object.keys(materials).length;
-            if (totalItems > 0) {
-                html += `
-                    <tr class="total-row">
-                        <td class="material-name">Total de materiales diferentes</td>
-                        <td class="material-count">${totalItems}</td>
-                    </tr>
-                `;
-            }
-            
-            html += `
-                        </tbody>
-                    </table>
-                </div>
-            `;
-            
-            return html;
-        }
-
-        // Función para crear el resumen por grado
-        function createGradeSummary(gradeTotals, gradeArmorCount) {
-            const gradeOrder = ["D", "C", "B", "A", "S", "Dynasty", "Moirai"];
-            let html = '';
-            
-            for (const grade of gradeOrder) {
-                if (gradeTotals[grade] && Object.keys(gradeTotals[grade]).length > 0) {
-                    const armorCount = gradeArmorCount[grade] || 0;
-                    const materialCount = Object.keys(gradeTotals[grade]).length;
-                    let adenaTotal = gradeTotals[grade]["Adena"] || 0;
-                    let ancientAdenaTotal = gradeTotals[grade]["Ancient Adena"] || 0;
-                    
-                    html += `
-                        <div class="grade-card ${grade.toLowerCase()}">
-                            <div class="grade-title">Grado ${grade}</div>
-                            <div class="grade-stats">
-                                <div><i class="fas fa-shield-alt"></i> Armaduras: ${armorCount}</div>
-                                <div><i class="fas fa-cube"></i> Materiales: ${materialCount}</div>
-                                <div><i class="fas fa-coins"></i> Adena: ${adenaTotal.toLocaleString()}</div>
-                                ${ancientAdenaTotal > 0 ? `<div><i class="fas fa-gem"></i> Ancient Adena: ${ancientAdenaTotal.toLocaleString()}</div>` : ''}
-                            </div>
-                        </div>
-                    `;
-                }
-            }
-            
-            return html;
-        }
-
-        // Función para actualizar la visualización
-        function updateDisplay() {
-            const target = document.getElementById("targetSelect").value;
-            const currentArmor = document.getElementById("currentArmorSelect").value;
-            
-            const resultsContainer = document.getElementById("resultsContainer");
-            const summaryContainer = document.getElementById("summaryContainer");
-            
-            resultsContainer.innerHTML = "";
-            summaryContainer.innerHTML = "";
-            
-            const { totalMaterials, gradeTotals, gradeArmorCount } = calculateMaterials(target, currentArmor);
-            
-            // Mostrar resumen por grado
-            summaryContainer.innerHTML = createGradeSummary(gradeTotals, gradeArmorCount);
-            
-            // Mostrar tablas por grado
-            const gradeOrder = ["D", "C", "B", "A", "S", "Dynasty", "Moirai"];
-            
-            for (const grade of gradeOrder) {
-                if (gradeTotals[grade] && Object.keys(gradeTotals[grade]).length > 0) {
-                    const gradeClass = `grade-${grade.toLowerCase()}`;
-                    let gradeTitle = `Grado ${grade} - Materiales Totales`;
-                    
-                    if (grade === "B") gradeTitle += " (Zubei, Avadon, Blue Wolf, Doom)";
-                    if (grade === "A") gradeTitle += " (Dark Crystal, Tallum, Nightmare, Majestic)";
-                    if (grade === "Moirai") gradeTitle += " (Set completo: Helmet, Armor, Pants, Glove, Shoes)";
-                    
-                    resultsContainer.innerHTML += createMaterialTable(gradeTotals[grade], gradeTitle, gradeClass);
-                }
-            }
-            
-            // Mostrar tabla con total general
-            if (Object.keys(totalMaterials).length > 0) {
-                resultsContainer.innerHTML += createMaterialTable(totalMaterials, "TOTAL GENERAL - Todos los materiales", "grade-all");
-            }
-        }
     </script>
 </body>
 </html>
